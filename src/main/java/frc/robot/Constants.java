@@ -135,8 +135,8 @@ public class Constants {
 
     public static final class DriveConstants {
 
-        public static final double trackWidth = Units.inchesToMeters(23.5); //22 //17.25
-        public static final double wheelBase = Units.inchesToMeters(23.5); //22 //28.5
+        public static final double trackWidth = Units.inchesToMeters(20.5); //22 //17.25 //width between left and right swerve moudles
+        public static final double wheelBase = Units.inchesToMeters(16.5); //22 //28.5 //length between front and back motors
 
         public static final SwerveDriveKinematics kinematics = 
             new SwerveDriveKinematics(
@@ -147,7 +147,7 @@ public class Constants {
             );
             
 
-        public static final double driveWheelGearReduction = 8.14; //6.86 for MK3
+        public static final double driveWheelGearReduction = 6.75; //6.86 for MK3
         public static final double rotationWheelGearReduction = 12.8; //12.8 for MK3
 
         public static final double wheelDiameterMeters = 0.050686 * 2;
