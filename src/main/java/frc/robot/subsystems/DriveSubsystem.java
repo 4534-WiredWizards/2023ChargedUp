@@ -141,10 +141,15 @@ public class DriveSubsystem extends SubsystemBase {
      * if the control is field relative or robot relative
      * @return 
      */
+    double forward, strafe, rotation;
+
     public void drive(double forward, double strafe, double rotation, boolean isFieldRelative) {
 
         // update the drive inputs for use in AlignWithGyro and AlignWithTargetVision control
-        commandedForward = forward;
+        this.forward += Math.max(-0.1, Math.min(forward - this.forward, 0.1));
+        this.rotation += Math.max(-0.1, Math.min(rotation - this.rotation, 0.1));
+        this.strafe += Math.max(-0.1, Math.min(strafe - this.strafe, 0.1));
+        commandedForward = this.forward;
         commandedStrafe = strafe;
         commandedRotation = rotation;
 

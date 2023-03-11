@@ -22,7 +22,7 @@ public class ArmToPosition extends CommandBase {
   private double setpoint;
 
   private double offset = 1;
-  PIDController armPID = new PIDController(0.005, 0, 0);
+  PIDController armPID = new PIDController(0.01, 0, 0);
   public ArmToPosition(Arm arm, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = arm;
@@ -67,7 +67,7 @@ public class ArmToPosition extends CommandBase {
       m_arm.runArm(0);
     }
     else {
-      m_arm.runArm(0.5 * armPID.calculate(m_arm.getArmEncoder(), setpoint));
+      m_arm.runArm(armPID.calculate(m_arm.getArmEncoder(), setpoint));
       System.out.println("Running PID");
     }
       
