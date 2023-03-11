@@ -5,16 +5,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Arm;
+
 
 public class SqueezePincer extends CommandBase {
   /** Creates a new SqueezePincer. */
-  public SqueezePincer() {
+  Arm m_arm;
+  public SqueezePincer(Arm arm) {
     // Use addRequirements() here to declare subsystem dependencies.
+    m_arm = arm;
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_arm.setPincerSolenoid(!m_arm.getPincerSolenoid());
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -27,6 +33,6 @@ public class SqueezePincer extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
