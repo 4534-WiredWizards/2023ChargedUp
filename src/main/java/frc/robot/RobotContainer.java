@@ -51,7 +51,7 @@ import frc.robot.commands.RotateArm;
 import frc.robot.commands.SqueezePincer;
 //import frc.robot.commands.SecondSuction;
 import frc.robot.commands.SuctionControl;
-import frc.robot.commands.ToggleRelay;
+import frc.robot.commands.ChangeLEDS;
 import frc.robot.commands.ZeroArm;
 import frc.robot.commands.resetGyro;
 import frc.robot.commands.AprilTagDrive;
@@ -190,7 +190,7 @@ public class RobotContainer {
         new JoystickButton(m_joystick, InputDevices.btn_a).onTrue(new GripPistonControl(t_arm)); //Lower Jaw 
         new JoystickButton(m_joystick, InputDevices.btn_y).onTrue(new ExtensionPistonControl(t_arm)); //Actuate on the arm (extendy)
         new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SqueezePincer(t_arm)); //Pincer on top of robot arm
-        new JoystickButton(m_joystick, InputDevices.btn_leftBumper).onTrue(new ToggleRelay(l_ledLights));
+        new JoystickButton(m_joystick, InputDevices.btn_leftBumper).onTrue(new ChangeLEDS(l_ledLights));
 
 
 
