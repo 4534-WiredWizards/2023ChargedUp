@@ -46,6 +46,7 @@ import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryUtil;
 
 import frc.robot.commands.RotateArm;
+import frc.robot.commands.SqueezePincer;
 //import frc.robot.commands.SecondSuction;
 import frc.robot.commands.SuctionControl;
 import frc.robot.commands.ZeroArm;
@@ -182,6 +183,7 @@ public class RobotContainer {
 
         new JoystickButton(m_joystick, InputDevices.btn_a).onTrue(new GripPistonControl(t_arm));
         new JoystickButton(m_joystick, InputDevices.btn_y).onTrue(new ExtensionPistonControl(t_arm));
+        new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SqueezePincer(t_arm));
 
         new JoystickButton(m_joystick, InputDevices.btn_start).onTrue(new ZeroArm(t_arm));
         //new POVButton(m_joystick, 90).onTrue(new AprilTagDrive(t_destimator, drive));
