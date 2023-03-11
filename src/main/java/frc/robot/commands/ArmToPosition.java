@@ -18,12 +18,12 @@ public class ArmToPosition extends CommandBase {
   private double upperLimit = -150;
   private double lowerLimit = 0;
   private final double upperPos = -130;
-  private final double middlePos = -100;
-  private final double lowerPos = -10;
+  private final double middlePos = -128;
+  private final double lowerPos = -5;
   private final double station = -115;
   private double setpoint;
   private double ramp = 0;
-  private double increment = 0.2
+  private double increment = 0.2;
 
   private double offset = 1;
   //ArmFeedForward feedforward = new ArmFeedForward(1, 0, 0)

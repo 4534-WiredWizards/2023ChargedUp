@@ -72,20 +72,22 @@ public class LedLights extends SubsystemBase {
    private void setRelayOneState(int[] input) {
     // Get the boolean array from the input array
     boolean[] output = convertToBoolean(input);
+    Integer bitOne = 2;
+    Integer bitTwo = 3;
 
     // Bit One and Two, these can be independently on or both on or both off
-    if(output[0] == true && output[1] == true){
+    if(output[bitOne] == true && output[bitTwo] == true){
         //If both bits are on set both forward and reverse to on
         relayOne.set(Relay.Value.kOn);
     }
-    else if(output[0] == false && output[1] == false){
+    else if(output[bitOne] == false && output[bitTwo] == false){
         //If both bits are off set both forward and reverse to off
         relayOne.set(Relay.Value.kOff);
     }
-    else if(output[0] == true && output[1] == false){
+    else if(output[bitOne] == true && output[bitTwo] == false){
             //If bit one is on and bit two is off set forward to on 
         relayOne.set(Relay.Value.kForward);
-    } else if(output[0] == false && output[1] == true){
+    } else if(output[bitOne] == false && output[bitTwo] == true){
         //If bit one is off and bit two is on set reverse to on
         relayOne.set(Relay.Value.kReverse);
     }
@@ -94,23 +96,27 @@ public class LedLights extends SubsystemBase {
    public void setRelayTwoState(int[] input) {
     // Get the boolean array from the input array
     boolean[] output = convertToBoolean(input);
+    Integer bitThree = 0;
+    Integer bitFour = 1;
 
-    // Bit One and Two, these can be independently on or both on or both off
-    if(output[2] == true && output[3] == true){
+    // Bit Three and Four, these can be independently on or both on or both off
+    if(output[bitThree] == true && output[bitFour] == true){
         //If both bits are on set both forward and reverse to on
         relayTwo.set(Relay.Value.kOn);
     }
-    else if(output[2] == false && output[3] == false){
+    else if(output[bitThree] == false && output[bitFour] == false){
         //If both bits are off set both forward and reverse to off
         relayTwo.set(Relay.Value.kOff);
     }
-    else if(output[2] == true && output[3] == false){
+    else if(output[bitThree] == true && output[bitFour] == false){
             //If bit one is on and bit two is off set forward to on 
         relayTwo.set(Relay.Value.kForward);
-    } else if(output[2] == false && output[3] == true){
+    } else if(output[bitThree] == false && output[bitFour] == true){
         //If bit one is off and bit two is on set reverse to on
         relayTwo.set(Relay.Value.kReverse);
     }
+
+   
    }
 
    public void setRelaysFromArray(int[] input){

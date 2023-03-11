@@ -31,7 +31,7 @@ public class ChangeLEDS extends CommandBase {
   public void SetConeToggle(boolean state){
     coneGiveState = state;
     if(coneGiveState){
-        coneGive();
+        defense();
         // Print to console give code
         System.out.print("Setting LEDs to cone patern");
     }else{
