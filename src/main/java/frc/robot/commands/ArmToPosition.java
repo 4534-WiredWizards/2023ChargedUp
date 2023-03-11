@@ -17,13 +17,16 @@ public class ArmToPosition extends CommandBase {
   private int position;
   private double upperLimit = -150;
   private double lowerLimit = 0;
-  private double upperPos = -130;
-  private double middlePos = -100;
-  private double lowerPos = -10;
-  private double station = -115;
+  private final double upperPos = -130;
+  private final double middlePos = -100;
+  private final double lowerPos = -10;
+  private final double station = -115;
   private double setpoint;
+  private double ramp = 0;
+  private double increment = 0.2
 
   private double offset = 1;
+  //ArmFeedForward feedforward = new ArmFeedForward(1, 0, 0)
   PIDController armPID = new PIDController(0.005, 0.0015, 0);
   public ArmToPosition(Arm arm, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -50,7 +53,8 @@ public class ArmToPosition extends CommandBase {
     }
     else if (position == 3) {
       setpoint = lowerPos;
-  }
+    }
+    ramp = 0;
   }
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -68,12 +72,15 @@ public class ArmToPosition extends CommandBase {
     // else if (!isUp) {
     //   m_arm.runArm(armPID.calculate(m_arm.getArmEncoder(), setpointOne));
     // }
+    if (ramp < 1) {
+      ramp += increment;
+    }
     
     if (m_arm.getArmEncoder() < upperLimit || m_arm.getArmEncoder() > lowerLimit)  {
       m_arm.runArm(0);
     }
     else {
-      m_arm.runArm(-0.4 * armPID.calculate(m_arm.getArmEncoder(), setpoint));
+      m_arm.runArm(ramp * -0.6 * armPID.calculate(m_arm.getArmEncoder(), setpoint) );
       System.out.println("Running PID");
     }
       
