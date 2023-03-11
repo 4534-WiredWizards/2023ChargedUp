@@ -31,8 +31,10 @@ public class Arm extends SubsystemBase {
   private TalonFX armMotorTwo;
   private Solenoid extensionSolenoid;
   private Solenoid gripSolenoid;
+  private Solenoid pincerSolenoid;
   private boolean eSolenoidState;
   private boolean gSolenoidState;
+  private boolean pSolenoidState;
 
   //private Solenoid breakPiston;
   //private boolean pistonState;
@@ -52,8 +54,10 @@ public class Arm extends SubsystemBase {
     //armMotorTwo = new TalonFX(CANDevices.armMotorTwo);
     eSolenoidState = false;
     gSolenoidState = false;
+    pSolenoidState = false;
     extensionSolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH, 2);
     gripSolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH, 3);
+    pincerSolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH, 4);
 
 
 
@@ -109,6 +113,15 @@ public class Arm extends SubsystemBase {
   public void setGripSolenoid(boolean state) {
     gSolenoidState = state;
     gripSolenoid.set(state);
+  }
+
+  public boolean getPincerSolenoid(){
+    return pSolenoidState;
+  }
+
+  public void setPincerSolenoid(boolean state){
+    pSolenoidState = state;
+    pincerSolenoid.set(state);
   }
 
   @Override
