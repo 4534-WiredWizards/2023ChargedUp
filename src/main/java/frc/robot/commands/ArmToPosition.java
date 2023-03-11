@@ -13,7 +13,7 @@ public class ArmToPosition extends CommandBase {
   /** Creates a new ArmToPosition. */
   Arm m_arm;
   private boolean isUp;
-  private double position;
+  private int position;
   private double upperLimit = -150;
   private double lowerLimit = 0;
   private double upperPos = -130;

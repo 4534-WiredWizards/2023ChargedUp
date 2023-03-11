@@ -195,6 +195,11 @@ public class DriveSubsystem extends SubsystemBase {
             new SwerveModuleState(rearRight.getCurrentVelocityMetersPerSecond(), rearRight.getCanEncoderAngle())
         };
 
+        states[0] = SwerveModuleState.optimize(states[0], frontLeft.getCanEncoderAngle());
+        states[1] = SwerveModuleState.optimize(states[1], frontRight.getCanEncoderAngle());
+        states[2] = SwerveModuleState.optimize(states[2], rearLeft.getCanEncoderAngle());
+        states[3] = SwerveModuleState.optimize(states[3], rearRight.getCanEncoderAngle());
+
         return states;
 
     }

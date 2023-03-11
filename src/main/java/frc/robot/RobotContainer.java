@@ -185,13 +185,15 @@ public class RobotContainer {
         new JoystickButton(m_joystick, InputDevices.btn_y).onTrue(new ExtensionPistonControl(t_arm));
         new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SqueezePincer(t_arm));
 
+
+
         new JoystickButton(m_joystick, InputDevices.btn_start).onTrue(new ZeroArm(t_arm));
         //new POVButton(m_joystick, 90).onTrue(new AprilTagDrive(t_destimator, drive));
         //new POVButton(m_joystick, 0).whileTrue(new RotateArm(t_arm, true));
         //new POVButton(m_joystick, 180).whileTrue(new RotateArm(t_arm, false));
 
-        //new POVButton(m_joystick, 0).onTrue(new ArmToPosition(t_arm, 1));
-        //new POVButton(m_joystick, 180).onTrue(new ArmToPosition(t_arm, 2));
+        new POVButton(m_joystick, 0).onTrue(new ArmToPosition(t_arm, 1));
+        new POVButton(m_joystick, 180).onTrue(new ArmToPosition(t_arm, 2));
 
 
 
