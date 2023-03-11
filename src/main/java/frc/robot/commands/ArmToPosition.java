@@ -67,7 +67,7 @@ public class ArmToPosition extends CommandBase {
       m_arm.runArm(0);
     }
     else {
-      m_arm.runArm(armPID.calculate(m_arm.getArmEncoder(), setpoint));
+      m_arm.runArm(0.5 * armPID.calculate(m_arm.getArmEncoder(), setpoint));
       System.out.println("Running PID");
     }
       
