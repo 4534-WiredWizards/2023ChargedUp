@@ -70,15 +70,17 @@ public class OperatorControl extends CommandBase {
 
         double speedScale = speedAdjust.getAsDouble()*DriveConstants.speedScaleSlope+DriveConstants.speedScaleOffset;
 
-        double fwdX = forwardX.getAsDouble();
+        // All inputs inverted because initial state is pointed towards drivers!
+        
+        double fwdX = -1 * forwardX.getAsDouble();
         fwdX = Math.copySign(fwdX, fwdX);
         fwdX = deadbandInputs(fwdX) * Units.feetToMeters(DriveConstants.maxDriveSpeed) * speedScale;
 
-        double fwdY = forwardY.getAsDouble();
+        double fwdY = -1 * forwardY.getAsDouble();
         fwdY = Math.copySign(fwdY, fwdY);
         fwdY = deadbandInputs(fwdY) * Units.feetToMeters(DriveConstants.maxDriveSpeed) * speedScale;
 
-        double rot = rotation.getAsDouble();
+        double rot = -1 * rotation.getAsDouble();
         rot = Math.copySign(rot * rot, rot);
         rot = deadbandInputs(rot) * Units.degreesToRadians(DriveConstants.teleopTurnRateDegPerSec*rotationConstant);
 

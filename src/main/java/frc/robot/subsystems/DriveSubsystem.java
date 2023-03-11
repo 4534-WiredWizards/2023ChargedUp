@@ -159,7 +159,7 @@ public class DriveSubsystem extends SubsystemBase {
         ChassisSpeeds speeds =
             isCommandedFieldRelative
                 ? ChassisSpeeds.fromFieldRelativeSpeeds(
-                    forward, strafe, -rotation, getHeading()) //Inverted rotation during field relative driving
+                    forward, strafe, rotation, getHeading()) //Inverted rotation during field relative driving
                 : new ChassisSpeeds(forward, strafe, rotation);
         
         // use kinematics (wheel placements) to convert overall robot state to array of individual module states
