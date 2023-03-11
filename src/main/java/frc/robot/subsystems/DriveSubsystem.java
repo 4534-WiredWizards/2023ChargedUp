@@ -165,6 +165,11 @@ public class DriveSubsystem extends SubsystemBase {
         // use kinematics (wheel placements) to convert overall robot state to array of individual module states
         SwerveModuleState[] states = DriveConstants.kinematics.toSwerveModuleStates(speeds);
 
+        states[0] = SwerveModuleState.optimize(states[0], frontLeft.getCanEncoderAngle());
+        states[1] = SwerveModuleState.optimize(states[1], frontRight.getCanEncoderAngle());
+        states[2] = SwerveModuleState.optimize(states[2], rearLeft.getCanEncoderAngle());
+        states[3] = SwerveModuleState.optimize(states[3], rearRight.getCanEncoderAngle());
+
         // make sure the wheels don't try to spin faster than the maximum speed possible
         //SwerveDriveKinematics.normalizeWheelSpeeds(states, DriveConstants.maxDriveSpeed);
 
@@ -194,11 +199,6 @@ public class DriveSubsystem extends SubsystemBase {
             new SwerveModuleState(rearLeft.getCurrentVelocityMetersPerSecond(), rearLeft.getCanEncoderAngle()),
             new SwerveModuleState(rearRight.getCurrentVelocityMetersPerSecond(), rearRight.getCanEncoderAngle())
         };
-
-        states[0] = SwerveModuleState.optimize(states[0], frontLeft.getCanEncoderAngle());
-        states[1] = SwerveModuleState.optimize(states[1], frontRight.getCanEncoderAngle());
-        states[2] = SwerveModuleState.optimize(states[2], rearLeft.getCanEncoderAngle());
-        states[3] = SwerveModuleState.optimize(states[3], rearRight.getCanEncoderAngle());
 
         return states;
 
