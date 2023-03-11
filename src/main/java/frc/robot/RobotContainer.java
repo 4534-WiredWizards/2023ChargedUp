@@ -30,6 +30,7 @@ import frc.robot.commands.drivetrain.OperatorControl;
 //import frc.robot.commands.superstructure.Indexing.Waiting;
 //import frc.robot.commands.superstructure.shooting.RampUpWithVision;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.LedLights;
 import frc.robot.subsystems.Vacuum;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Arm;
@@ -49,6 +50,7 @@ import frc.robot.commands.RotateArm;
 import frc.robot.commands.SqueezePincer;
 //import frc.robot.commands.SecondSuction;
 import frc.robot.commands.SuctionControl;
+import frc.robot.commands.ToggleRelay;
 import frc.robot.commands.ZeroArm;
 import frc.robot.commands.resetGyro;
 import frc.robot.commands.AprilTagDrive;
@@ -90,6 +92,7 @@ public class RobotContainer {
     public DistanceEstimator t_destimator = new DistanceEstimator();
     public Vacuum t_vacuum = new Vacuum();
     public Arm t_arm = new Arm();
+    public LedLights l_ledLights = new LedLights();
     //public NewIntake t_newintake = new NewIntake();
 
     
@@ -165,7 +168,6 @@ public class RobotContainer {
 
         //Suctions
         //new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SecondSuction(t_vacuum));
-        new JoystickButton(m_joystick, InputDevices.btn_x).onTrue(new SuctionControl(t_vacuum));
 
         //Pistons
         //new JoystickButton(m_joystick, InputDevices.btn_leftBumper).onTrue(new GripPistonControl(t_arm));   
@@ -180,10 +182,11 @@ public class RobotContainer {
         //Intake Motors 
         //new JoystickButton(m_joystick, InputDevices.btn_a).whileTrue(new ControlNewIntake(t_newintake, true));       
         //new JoystickButton(m_joystick, InputDevices.btn_y).whileTrue(new ControlNewIntake(t_newintake, false));
-
-        new JoystickButton(m_joystick, InputDevices.btn_a).onTrue(new GripPistonControl(t_arm));
-        new JoystickButton(m_joystick, InputDevices.btn_y).onTrue(new ExtensionPistonControl(t_arm));
-        new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SqueezePincer(t_arm));
+        new JoystickButton(m_joystick, InputDevices.btn_x).onTrue(new SuctionControl (t_vacuum)); //Both vacume cups
+        new JoystickButton(m_joystick, InputDevices.btn_a).onTrue(new GripPistonControl(t_arm)); //Lower Jaw 
+        new JoystickButton(m_joystick, InputDevices.btn_y).onTrue(new ExtensionPistonControl(t_arm)); //Actuate on the arm (extendy)
+        new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SqueezePincer(t_arm)); //Pincer on top of robot arm
+        new JoystickButton(m_joystick, InputDevices.btn_leftBumper).onTrue(new ToggleRelay(l_ledLights));
 
 
 
