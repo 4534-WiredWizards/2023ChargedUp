@@ -33,15 +33,16 @@ public class Constants {
         public static final int armMotorOne = 15;
         public static final int armEncoder = 37;
 
-        public static final int intakeMotorOne = 16;
-        public static final int intakeMotorTwo = 26;
+        //public static final int intakeMotorOne = 16;
+        //public static final int intakeMotorTwo = 26;
 
-        public static final double frontLeftAngleOffset = Units.degreesToRadians(0); //40.0
-        public static final double frontRightAngleOffset = Units.degreesToRadians(168.0); //84.5
-        
 
-        public static final double rearLeftAngleOffset = Units.degreesToRadians(84.5);  //168.0
-        public static final double rearRightAngleOffset = Units.degreesToRadians(40.0); //0 
+        // Using values from can encoders from shuffleboard to calculate offsets
+        public static final double frontLeftAngleOffset = Units.degreesToRadians(181.4); //1.7 //180.7
+        public static final double frontRightAngleOffset = Units.degreesToRadians(128.5);  //90 
+
+        public static final double rearLeftAngleOffset = Units.degreesToRadians(265.6);  //84.6 //263.5 //EFFECTS Front Right
+        public static final double rearRightAngleOffset = Units.degreesToRadians(241.2); //61.6 //240.7
     
         //public static final int feederWheelMotorId = 35;
         // public static final int rightFlywheelMotorId = 25;

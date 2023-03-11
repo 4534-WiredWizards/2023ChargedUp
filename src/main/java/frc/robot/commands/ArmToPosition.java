@@ -16,9 +16,9 @@ public class ArmToPosition extends CommandBase {
   private double position;
   private double upperLimit = -150;
   private double lowerLimit = 0;
-  private double upperPos = -137;
+  private double upperPos = -130;
   private double lowerPos = -100;
-  private double station = -80;
+  private double station = -115;
   private double setpoint;
 
   private double offset = 1;
@@ -77,6 +77,7 @@ public class ArmToPosition extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_arm.runArm(0);
+    System.out.println("Command has ended");
   }
 
   // Returns true when the command should end.

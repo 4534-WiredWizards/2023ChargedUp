@@ -21,7 +21,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Vacuum extends SubsystemBase {
   /** Creates a new Vacuum. */
-  private CANSparkMax vMotor;
+  private CANSparkMax vMotor1;
+  private CANSparkMax vMotor2;
   private boolean vacuumState;
   PowerDistribution pd;
   private Solenoid solenoid1;
@@ -36,7 +37,8 @@ public class Vacuum extends SubsystemBase {
 
 
   public Vacuum() {
-    vMotor = new CANSparkMax(13, MotorType.kBrushless);
+    vMotor1 = new CANSparkMax(13, MotorType.kBrushless);
+    vMotor2 = new CANSparkMax(16, MotorType.kBrushless);
     vacuumState = false;
     pd = new PowerDistribution(2, ModuleType.kRev);
 
@@ -57,11 +59,13 @@ public class Vacuum extends SubsystemBase {
 
   //Vacume speed items
   public void setVacuumSpeed(double speed) {
-    vMotor.set(speed);
+    vMotor1.set(speed);
+    vMotor2.set(speed);
+
   }
 
   public double getSpeed(){
-    return vMotor.get();
+    return vMotor1.get();
   }
   
   //Vacume sate items

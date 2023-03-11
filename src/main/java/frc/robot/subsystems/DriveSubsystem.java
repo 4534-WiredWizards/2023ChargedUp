@@ -159,7 +159,7 @@ public class DriveSubsystem extends SubsystemBase {
         ChassisSpeeds speeds =
             isCommandedFieldRelative
                 ? ChassisSpeeds.fromFieldRelativeSpeeds(
-                    forward, strafe, rotation, getHeading())
+                    forward, strafe, -rotation, getHeading()) //Inverted rotation during field relative driving
                 : new ChassisSpeeds(forward, strafe, rotation);
         
         // use kinematics (wheel placements) to convert overall robot state to array of individual module states
@@ -268,21 +268,23 @@ public class DriveSubsystem extends SubsystemBase {
         
         double[] ypr = new double[3];
         ypr[0] = 0-ahrs.getAngle();
+        return Rotation2d.fromDegrees(ypr[0]);
 
-        double[] rotation_2 = new double[3];
-        rotation_2[0] = ypr[0] - 180;
+        //Jason Test Code
+        // double[] rotation_2 = new double[3];
+        // rotation_2[0] = ypr[0] - 180;
 
-        double place_holder_DesiredRotation = ypr[0];
+        // double place_holder_DesiredRotation = ypr[0];
 
-        double[] final_rotation = new double[3];
+        // double[] final_rotation = new double[3];
 
-        if (Math.abs(ypr[0] - place_holder_DesiredRotation) < Math.abs(rotation_2[0] = ypr[0] - place_holder_DesiredRotation)) {
-            final_rotation[0] = ypr[0];
-        }
-        else {
-            final_rotation[0] = rotation_2[0];
-        }
-        return Rotation2d.fromDegrees(final_rotation[0] + 180);
+        // if (Math.abs(ypr[0] - place_holder_DesiredRotation) < Math.abs(rotation_2[0] = ypr[0] - place_holder_DesiredRotation)) {
+        //     final_rotation[0] = ypr[0];
+        // }
+        // else {
+        //     final_rotation[0] = rotation_2[0];
+        // }
+        // return Rotation2d.fromDegrees(final_rotation[0] + 180);
 
     }
 

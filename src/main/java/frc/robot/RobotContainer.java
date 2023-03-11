@@ -36,7 +36,7 @@ import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.ClimbPiston;
 import frc.robot.subsystems.DistanceEstimator;
 import frc.robot.subsystems.Limelight;
-import frc.robot.subsystems.NewIntake;
+//import frc.robot.subsystems.NewIntake;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -46,7 +46,7 @@ import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryUtil;
 
 import frc.robot.commands.RotateArm;
-import frc.robot.commands.SecondSuction;
+//import frc.robot.commands.SecondSuction;
 import frc.robot.commands.SuctionControl;
 import frc.robot.commands.ZeroArm;
 import frc.robot.commands.resetGyro;
@@ -54,7 +54,7 @@ import frc.robot.commands.AprilTagDrive;
 import frc.robot.commands.ArmToPosition;
 import frc.robot.commands.AutoTesting;
 import frc.robot.commands.ControlArmPiston;
-import frc.robot.commands.ControlNewIntake;
+//import frc.robot.commands.ControlNewIntake;
 import frc.robot.commands.ControlShooterMotor;
 import frc.robot.commands.ControlVacuum;
 //import frc.robot.commands.ControlVacumm;
@@ -89,7 +89,7 @@ public class RobotContainer {
     public DistanceEstimator t_destimator = new DistanceEstimator();
     public Vacuum t_vacuum = new Vacuum();
     public Arm t_arm = new Arm();
-    public NewIntake t_newintake = new NewIntake();
+    //public NewIntake t_newintake = new NewIntake();
 
     
     String trajectoryJSON = "paths/output/FrontRight.wpilib.json";
@@ -163,8 +163,8 @@ public class RobotContainer {
         new JoystickButton(m_fancyJoystick, fancyJoystick.l1).onTrue(new resetGyro(drive));
 
         //Suctions
-        new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SuctionControl(t_vacuum));
-        new JoystickButton(m_joystick, InputDevices.btn_x).onTrue(new SecondSuction(t_vacuum));
+        //new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SecondSuction(t_vacuum));
+        new JoystickButton(m_joystick, InputDevices.btn_x).onTrue(new SuctionControl(t_vacuum));
 
         //Pistons
         //new JoystickButton(m_joystick, InputDevices.btn_leftBumper).onTrue(new GripPistonControl(t_arm));   
@@ -177,19 +177,19 @@ public class RobotContainer {
         
 
         //Intake Motors 
-        new JoystickButton(m_joystick, InputDevices.btn_a).whileTrue(new ControlNewIntake(t_newintake, true));       
-        new JoystickButton(m_joystick, InputDevices.btn_y).whileTrue(new ControlNewIntake(t_newintake, false));
+        //new JoystickButton(m_joystick, InputDevices.btn_a).whileTrue(new ControlNewIntake(t_newintake, true));       
+        //new JoystickButton(m_joystick, InputDevices.btn_y).whileTrue(new ControlNewIntake(t_newintake, false));
 
-        new JoystickButton(m_joystick, InputDevices.btn_leftBumper).onTrue(new GripPistonControl(t_arm));
-        new JoystickButton(m_joystick, InputDevices.btn_rightBumper).onTrue(new ExtensionPistonControl(t_arm));
+        new JoystickButton(m_joystick, InputDevices.btn_a).onTrue(new GripPistonControl(t_arm));
+        new JoystickButton(m_joystick, InputDevices.btn_y).onTrue(new ExtensionPistonControl(t_arm));
 
         new JoystickButton(m_joystick, InputDevices.btn_start).onTrue(new ZeroArm(t_arm));
         //new POVButton(m_joystick, 90).onTrue(new AprilTagDrive(t_destimator, drive));
         //new POVButton(m_joystick, 0).whileTrue(new RotateArm(t_arm, true));
         //new POVButton(m_joystick, 180).whileTrue(new RotateArm(t_arm, false));
 
-        new POVButton(m_joystick, 0).onTrue(new ArmToPosition(t_arm, 1));
-        new POVButton(m_joystick, 180).onTrue(new ArmToPosition(t_arm, 2));
+        //new POVButton(m_joystick, 0).onTrue(new ArmToPosition(t_arm, 1));
+        //new POVButton(m_joystick, 180).onTrue(new ArmToPosition(t_arm, 2));
 
 
 

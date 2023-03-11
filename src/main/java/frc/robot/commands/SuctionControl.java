@@ -19,6 +19,7 @@ public class SuctionControl extends CommandBase {
   @Override
   public void initialize() {
     m_vacuum.setSolenoid1(!m_vacuum.getSolenoid1());
+    m_vacuum.setSolenoid2(!m_vacuum.getSolenoid2());
   }
 
   // Called every time the scheduler runs while the command is scheduled.

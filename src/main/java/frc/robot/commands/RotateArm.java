@@ -66,6 +66,7 @@ public class RotateArm extends CommandBase {
         m_arm.runArm(-currentSpeed);
         currentSpeed += increment;
       }
+      System.out.println("Running arm");
       m_arm.runArm(-finalSpeed);
     }
 
