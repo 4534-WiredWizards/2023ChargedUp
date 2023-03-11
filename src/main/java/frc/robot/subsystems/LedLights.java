@@ -44,6 +44,18 @@ public class LedLights extends SubsystemBase {
     //Take in an array of four ones and zeros and return an array of 4 booleans
      //Example: [1,0,1,0] -> [true,false,true,false]
     public boolean[] convertToBoolean(int[] input){
+        // Flip the array so that its inverted, because most significant bit is first currently
+        // Example: [1,0,1,0] -> [0,1,0,1]
+        int[] flippedArray = new int[4];
+        for(int i = 0; i < 4; i++){
+            if(input[i] == 1){
+                flippedArray[i] = 0;
+            }
+            else{
+                flippedArray[i] = 1;
+            }
+        }
+
         boolean[] output = new boolean[4];
         for(int i = 0; i < 4; i++){
             if(input[i] == 1){
