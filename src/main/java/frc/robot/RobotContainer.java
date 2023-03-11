@@ -202,6 +202,8 @@ public class RobotContainer {
         new POVButton(m_joystick, 0).onTrue(new ArmToPosition(t_arm, 1));
         new POVButton(m_joystick, 90).onTrue(new ArmToPosition(t_arm, 2));
         new POVButton(m_joystick, 180).onTrue(new ArmToPosition(t_arm, 3));
+        new POVButton(m_joystick, 270).onTrue(new ArmToPosition(t_arm, 4));
+
 
 
 

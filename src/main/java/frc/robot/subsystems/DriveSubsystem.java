@@ -147,7 +147,7 @@ public class DriveSubsystem extends SubsystemBase {
 
         // update the drive inputs for use in AlignWithGyro and AlignWithTargetVision control
         this.forward += Math.max(-0.003, Math.min(forward - this.forward, 0.003));
-        this.rotation += Math.max(-0.1, Math.min(rotation - this.rotation, 0.1));
+        this.rotation += Math.max(-0.003, Math.min(rotation - this.rotation, 0.003));
         this.strafe += Math.max(-0.1, Math.min(strafe - this.strafe, 0.1));
         commandedForward = this.forward;
         commandedStrafe = strafe;

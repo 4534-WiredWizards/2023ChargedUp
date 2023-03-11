@@ -18,11 +18,12 @@ public class ArmToPosition extends CommandBase {
   private double upperLimit = -150;
   private double lowerLimit = 0;
   private final double upperPos = -130;
-  private final double middlePos = -128;
+  private final double middlePos = -115; 
   private final double lowerPos = -5;
-  private final double station = -115;
+  private final double station = -128; 
+  
   private double setpoint;
-  private double ramp = 0;
+  private double ramp;
   private double increment = 0.2;
 
   private double offset = 1;
@@ -49,10 +50,13 @@ public class ArmToPosition extends CommandBase {
       setpoint = upperPos; 
     }
     else if (position == 2) {
-      setpoint = middlePos;
+      setpoint = station;
     }
     else if (position == 3) {
       setpoint = lowerPos;
+    }
+    else if (position == 4) {
+      setpoint = middlePos;
     }
     ramp = 0;
   }
@@ -99,10 +103,10 @@ public class ArmToPosition extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (m_arm.getArmEncoder() > (setpoint-offset) && m_arm.getArmEncoder() < (setpoint+offset)){
-    return true;
-    }
-    else if (frc.robot.RobotContainer.m_joystick.getRawAxis(2) > 0.1 && frc.robot.RobotContainer.m_joystick.getRawAxis(3) > 0.1) {
+    // if (m_arm.getArmEncoder() > (setpoint-offset) && m_arm.getArmEncoder() < (setpoint+offset)){
+    // return true;
+    // }
+    if (frc.robot.RobotContainer.m_joystick.getRawAxis(2) > 0.5 || frc.robot.RobotContainer.m_joystick.getRawAxis(3) > 0.5) {
        return true;
      }
     else {

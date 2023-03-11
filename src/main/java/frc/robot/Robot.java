@@ -63,7 +63,7 @@ public class Robot extends TimedRobot {
         //Added to speed up auto running
         //new AutoTrajectories();
         UsbCamera fisheye = CameraServer.startAutomaticCapture();
-        fisheye.setResolution(320, 240);
+        // fisheye.setResolution(320, 240);
         fisheye.setPixelFormat(PixelFormat.kMJPEG);
         robotContainer.t_pneumatics.setCompressor(true);
 
