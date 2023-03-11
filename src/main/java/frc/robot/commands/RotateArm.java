@@ -30,12 +30,14 @@ public class RotateArm extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = arm;
     this.isUp = isUp;
+    addRequirements(m_arm);
   }
 
   public RotateArm(Arm arm, int target) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = arm;
     positionNum = target;
+    addRequirements(m_arm);
   }
 
 
@@ -60,6 +62,7 @@ public class RotateArm extends CommandBase {
     //   m_arm.runArm(0);
     // } 
     // else
+    //System.out.println("Running arm");
     if (frc.robot.RobotContainer.m_joystick.getRawAxis(2) > 0.75) {
     //if (isUp) {
       while (currentSpeed < finalSpeed) {
@@ -111,13 +114,14 @@ public class RotateArm extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (frc.robot.RobotContainer.m_joystick.getRawAxis(2) < 0.75 && frc.robot.RobotContainer.m_joystick.getRawAxis(3) < 0.75){
+    //if (frc.robot.RobotContainer.m_joystick.getRawAxis(2) < 0.75 && frc.robot.RobotContainer.m_joystick.getRawAxis(3) < 0.75){
     //if (frc.robot.RobotContainer.m_joystick.getRawButton(InputDevices.btn_leftBumper)  && frc.robot.RobotContainer.m_joystick.getRawButton(InputDevices.btn_rightBumper)){
-      return true;
-    }
-    else {
-      return false;
-    }
+      //return true;
+    //}
+    return false;
+    //else {
+    //  return false;
+    //}
   }
 
 

@@ -77,11 +77,7 @@ public class Robot extends TimedRobot {
         SmartDashboard.putData("Auto Routines", autoChooser);
         robotContainer.getTrajectories();
 
-        
-   }
-
-
-    
+    }  
 
     @Override
     public void robotPeriodic() {   
@@ -94,7 +90,7 @@ public class Robot extends TimedRobot {
         //Starts checking for updates to solonides
         
         t_ControlVacuum.execute();
-        t_RotateArm.execute();
+        //t_RotateArm.execute();
 
         // SrobotContainer.t_shooter.updateShooter();
         // robotContainer.t_feeder.updateSmartDashboard();
@@ -131,7 +127,7 @@ public class Robot extends TimedRobot {
     public void teleopInit() {
 
         if (autonomousCommand != null) {autonomousCommand.cancel();}
-
+        CommandScheduler.getInstance().schedule(t_RotateArm);
     }
 
     // @Override

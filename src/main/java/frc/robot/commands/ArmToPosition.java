@@ -8,6 +8,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.InputDevices;
 import frc.robot.subsystems.Arm;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 public class ArmToPosition extends CommandBase {
   /** Creates a new ArmToPosition. */
@@ -17,22 +18,25 @@ public class ArmToPosition extends CommandBase {
   private double upperLimit = -150;
   private double lowerLimit = 0;
   private double upperPos = -130;
-  private double lowerPos = -100;
+  private double middlePos = -100;
+  private double lowerPos = -10;
   private double station = -115;
   private double setpoint;
 
   private double offset = 1;
-  PIDController armPID = new PIDController(0.01, 0, 0);
+  PIDController armPID = new PIDController(0.005, 0.0015, 0);
   public ArmToPosition(Arm arm, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = arm;
     isUp = up;
+    addRequirements(m_arm);
   }
 
   public ArmToPosition(Arm arm, int pos) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = arm;
     position = pos;
+    addRequirements(m_arm);
   }
 
   // Called when the command is initially scheduled.
@@ -42,10 +46,12 @@ public class ArmToPosition extends CommandBase {
       setpoint = upperPos; 
     }
     else if (position == 2) {
-      setpoint = lowerPos;
+      setpoint = middlePos;
     }
+    else if (position == 3) {
+      setpoint = lowerPos;
   }
-
+  }
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
@@ -67,7 +73,7 @@ public class ArmToPosition extends CommandBase {
       m_arm.runArm(0);
     }
     else {
-      m_arm.runArm(armPID.calculate(m_arm.getArmEncoder(), setpoint));
+      m_arm.runArm(-0.4 * armPID.calculate(m_arm.getArmEncoder(), setpoint));
       System.out.println("Running PID");
     }
       
@@ -77,7 +83,10 @@ public class ArmToPosition extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_arm.runArm(0);
-    System.out.println("Command has ended");
+    System.err.println("Command has ended");
+    if(!interrupted) {
+      CommandScheduler.getInstance().schedule(new RotateArm(m_arm, true));
+    }
   }
 
   // Returns true when the command should end.
@@ -86,7 +95,7 @@ public class ArmToPosition extends CommandBase {
     if (m_arm.getArmEncoder() > (setpoint-offset) && m_arm.getArmEncoder() < (setpoint+offset)){
     return true;
     }
-    else if (frc.robot.RobotContainer.m_joystick.getRawButton(InputDevices.btn_leftBumper) || frc.robot.RobotContainer.m_joystick.getRawButton(InputDevices.btn_rightBumper)) {
+    else if (frc.robot.RobotContainer.m_joystick.getRawAxis(2) > 0.1 && frc.robot.RobotContainer.m_joystick.getRawAxis(3) > 0.1) {
        return true;
      }
     else {

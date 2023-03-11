@@ -38,6 +38,7 @@ import frc.robot.subsystems.ClimbPiston;
 import frc.robot.subsystems.DistanceEstimator;
 import frc.robot.subsystems.Limelight;
 //import frc.robot.subsystems.NewIntake;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -129,6 +130,8 @@ public class RobotContainer {
 
     }
 
+    AnalogInput vaccum = new AnalogInput(1);
+
     public void updateShuffleBoard() {
 
         SwerveModuleState[] tempStates; 
@@ -138,6 +141,7 @@ public class RobotContainer {
         //NOTE: Greg's Right X controller is on Axis 2
         SmartDashboard.putNumber("Right X Joy 1", m_fancyJoystick.getRawAxis(2));
         SmartDashboard.putNumber("Right X Joy 2", m_fancyJoystick.getRawAxis(3));
+        SmartDashboard.putNumber("vaccum", vaccum.getValue());
 
 
         tempStates = drive.getModuleStates();
@@ -196,7 +200,8 @@ public class RobotContainer {
         //new POVButton(m_joystick, 180).whileTrue(new RotateArm(t_arm, false));
 
         new POVButton(m_joystick, 0).onTrue(new ArmToPosition(t_arm, 1));
-        new POVButton(m_joystick, 180).onTrue(new ArmToPosition(t_arm, 2));
+        new POVButton(m_joystick, 90).onTrue(new ArmToPosition(t_arm, 2));
+        new POVButton(m_joystick, 180).onTrue(new ArmToPosition(t_arm, 3));
 
 
 
