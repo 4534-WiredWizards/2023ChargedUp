@@ -17,10 +17,10 @@ public class ArmToPosition extends CommandBase {
   private int position;
   private double upperLimit = -150;
   private double lowerLimit = 0;
-  private final double upperPos = -130;
-  private final double middlePos = -115; 
+  private final double upperPos = -125;
+  private final double middlePos = -105; 
   private final double lowerPos = -5;
-  private final double station = -128; 
+  private final double station = -115; 
   
   private double setpoint;
   private double ramp;
@@ -28,7 +28,7 @@ public class ArmToPosition extends CommandBase {
 
   private double offset = 1;
   //ArmFeedForward feedforward = new ArmFeedForward(1, 0, 0)
-  PIDController armPID = new PIDController(0.005, 0.0015, 0);
+  PIDController armPID = new PIDController(0.005, 0.01, 0);
   public ArmToPosition(Arm arm, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = arm;
@@ -82,6 +82,9 @@ public class ArmToPosition extends CommandBase {
     
     if (m_arm.getArmEncoder() < upperLimit || m_arm.getArmEncoder() > lowerLimit)  {
       m_arm.runArm(0);
+    }
+    else if (position == 3) {
+      m_arm.runArm(ramp * -0.3 * armPID.calculate(m_arm.getArmEncoder(), setpoint) );
     }
     else {
       m_arm.runArm(ramp * -0.6 * armPID.calculate(m_arm.getArmEncoder(), setpoint) );

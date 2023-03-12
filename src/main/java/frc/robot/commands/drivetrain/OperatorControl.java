@@ -80,9 +80,10 @@ public class OperatorControl extends CommandBase {
         fwdY = Math.copySign(fwdY, fwdY);
         fwdY = deadbandInputs(fwdY) * Units.feetToMeters(DriveConstants.maxDriveSpeed) * speedScale;
 
-        double rot = -1 * rotation.getAsDouble();
+        double rot = Math.pow(-1 * rotation.getAsDouble(), 3);
         rot = Math.copySign(rot * rot, rot);
         rot = deadbandInputs(rot) * Units.degreesToRadians(DriveConstants.teleopTurnRateDegPerSec*rotationConstant);
+        
 
 
         drive.drive(

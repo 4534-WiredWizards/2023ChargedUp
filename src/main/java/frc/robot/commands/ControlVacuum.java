@@ -9,7 +9,7 @@ import frc.robot.subsystems.Vacuum;
 
 public class ControlVacuum extends CommandBase {
   /** Creates a new ControlVacuum. */
-  private double speed = .5;
+  private double speed = 0.5;
   Vacuum m_vacuum;
   private double voltage_max = 4;
   public ControlVacuum(Vacuum vacuum) {

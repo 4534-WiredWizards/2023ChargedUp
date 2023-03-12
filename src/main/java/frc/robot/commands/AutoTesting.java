@@ -18,13 +18,15 @@ public class AutoTesting extends SequentialCommandGroup {
   public AutoTesting(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
     // Use addRequirements() here to declare subsystem dependencies.
     addCommands(
-        //new FollowTrajectory(drive, AutoTrajectories.test1, true),
-        new FollowTrajectory(drive, AutoTrajectories.leaveCommunity, true)
-        //new FollowTrajectory(drive, AutoTrajectories.back, true)
+     // new FollowTrajectory(drive, AutoTrajectories.fullPath, true)
+        //new FollowTrajectory(drive, AutoTrajectories.test1, true)
+        //new FollowTrajectory(drive, AutoTrajectories.part1, true),
+        new FollowTrajectory(drive, AutoTrajectories.toFront, true),
+        new FollowTrajectory(drive, AutoTrajectories.back, true),
         //new FollowTrajectory(drive, AutoTrajectories.moveRight, true),
-        //new FollowTrajectory(drive, AutoTrajectories.exitZone, true),
-        //new FollowTrajectory(drive, AutoTrajectories.moveLeft, true),
-        //new FollowTrajectory(drive, AutoTrajectories.onStation, true)
+        new FollowTrajectory(drive, AutoTrajectories.exitZone, true)
+        // new FollowTrajectory(drive, AutoTrajectories.moveLeft, true),
+        // new FollowTrajectory(drive, AutoTrajectories.onStation, true)
 
     );
   }
