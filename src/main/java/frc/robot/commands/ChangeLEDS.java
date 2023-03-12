@@ -6,37 +6,41 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.LedLights;
-
+import edu.wpi.first.wpilibj.DigitalOutput
 
 public class ChangeLEDS extends CommandBase {
   /** Creates a new SqueezePincer. */
   LedLights l_ledLights;
   private boolean coneGiveState; 
 
+  public class testOutOne = DigitalOutput(1);
+
 
   public ChangeLEDS(LedLights LedLights) {
     // Change leds from cone to cube
     l_ledLights = LedLights;
-
   }
 
   @Override
   public void initialize(){
     SetConeToggle(!coneGiveState);
   }
- 
+
 
 
   //Togels
   public void SetConeToggle(boolean state){
+    
     coneGiveState = state;
     if(coneGiveState){
-        charge();
+        testOutOne.set(true);
+        // charge();
         // Print to console give code
-        System.out.print("Setting LEDs to cone patern");
+        // System.out.print("Setting LEDs to cone patern");
     }else{
-        cubeGive();
-        System.out.print("Setting LEDs to cube patern");
+        testOutOne.set(false);
+        // cubeGive();
+        // System.out.print("Setting LEDs to cube patern");
     }
   }
 
