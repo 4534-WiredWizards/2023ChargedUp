@@ -13,7 +13,7 @@ public class ChangeLEDS extends CommandBase {
   LedLights l_ledLights;
   private boolean coneGiveState; 
 
-  public class testOutOne = DigitalOutput(1);
+  public DigitalOutput testOutOne = new DigitalOutput(1);
 
 
   public ChangeLEDS(LedLights LedLights) {
