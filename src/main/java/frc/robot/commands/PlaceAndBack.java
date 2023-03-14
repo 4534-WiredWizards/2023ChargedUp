@@ -19,12 +19,15 @@ public class PlaceAndBack extends SequentialCommandGroup {
     // Use addRequirements() here to declare subsystem dependencies.
     addCommands(
         new SetTongue(arm, true),
-        new SuctionControl(vacuum).withTimeout(1),
+        new SuctionControl(vacuum),
+        new DoNothing().withTimeout(1),
         new AutoArm(arm, 4).withTimeout(3),
         new FollowTrajectory(drive, AutoTrajectories.toFront, true),
-        new ExtensionPistonControl(arm).withTimeout(2),
+        new ExtensionPistonControl(arm),
+        new DoNothing().withTimeout(1),
         new SuctionControl(vacuum),
-        new GripPistonControl(arm),
+        new DoNothing().withTimeout(1),
+        new ExtensionPistonControl(arm),
         new FollowTrajectory(drive, AutoTrajectories.back, true),
         new ParallelCommandGroup(
           new AutoArm(arm, 3).withTimeout(3),
