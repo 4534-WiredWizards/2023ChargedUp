@@ -10,8 +10,8 @@ import frc.robot.Constants.InputDevices;
 import frc.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
-public class ArmToPosition extends CommandBase {
-  /** Creates a new ArmToPosition. */
+public class AutoArm extends CommandBase {
+  /** Creates a new AutoArm. */
   Arm m_arm;
   private boolean isUp;
   private int position;
@@ -31,14 +31,14 @@ public class ArmToPosition extends CommandBase {
   private double offset = 1;
   //ArmFeedForward feedforward = new ArmFeedForward(1, 0, 0)
   PIDController armPID = new PIDController(0.005, 0.03, 0);
-  public ArmToPosition(Arm arm, boolean up) {
+  public AutoArm(Arm arm, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = arm;
     isUp = up;
     addRequirements(m_arm);
   }
 
-  public ArmToPosition(Arm arm, int pos) {
+  public AutoArm(Arm arm, int pos) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = arm;
     position = pos;
@@ -62,7 +62,6 @@ public class ArmToPosition extends CommandBase {
     }
     else if (position == 1) {
       setpoint = upperCube;
-      System.out.println("Setting the position to upper cube");
     }
     ramp = 0;
   }
@@ -94,7 +93,7 @@ public class ArmToPosition extends CommandBase {
     }
     else {
       m_arm.runArm(ramp * -0.6 * armPID.calculate(m_arm.getArmEncoder(), setpoint) );
-      System.out.println("Running Arm PID in Auto ");
+      System.out.print("Running auto arm pid");
     }
       
   }
@@ -104,23 +103,13 @@ public class ArmToPosition extends CommandBase {
   public void end(boolean interrupted) {
     m_arm.runArm(0);
     System.err.println("Command has ended");
-    if(!interrupted) {
-      CommandScheduler.getInstance().schedule(new RotateArm(m_arm, true));
-    }
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    // if (m_arm.getArmEncoder() > (setpoint-offset) && m_arm.getArmEncoder() < (setpoint+offset)){
-    // return true;
-    // }
-    if (frc.robot.RobotContainer.m_joystick.getRawAxis(2) > 0.5 || frc.robot.RobotContainer.m_joystick.getRawAxis(3) > 0.5) {
-       return true;
-     }
-    else {
       return false;
-    }
+
 }
 
 }

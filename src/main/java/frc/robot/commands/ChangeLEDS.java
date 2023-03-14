@@ -13,6 +13,7 @@ public class ChangeLEDS extends CommandBase {
   LedLights l_ledLights;
   private boolean coneGiveState; 
 
+  public DigitalOutput testOutOne = new DigitalOutput(1);
 
 
   public ChangeLEDS(LedLights LedLights) {
@@ -29,13 +30,18 @@ public class ChangeLEDS extends CommandBase {
 
   //Togels
   public void SetConeToggle(boolean state){
-      coneGiveState = state;
-      if (coneGiveState){
-          coneGive();
-      } else {
-          cubeGive();
-      }
-   
+    
+    coneGiveState = state;
+    if(coneGiveState){
+        testOutOne.set(true);
+        // charge();
+        // Print to console give code
+        // System.out.print("Setting LEDs to cone patern");
+    }else{
+        testOutOne.set(false);
+        // cubeGive();
+        // System.out.print("Setting LEDs to cube patern");
+    }
   }
 
 
@@ -45,38 +51,38 @@ public class ChangeLEDS extends CommandBase {
 
   //Colors
   public void coneGive(){
-    int[] input = {0,0,0,0};
-    l_ledLights.setPinsFromArray(input);
+    int[] input = {0,1,0,0};
+    l_ledLights.setRelaysFromArray(input);
   }
 
   public void cubeGive(){
-    int[] input = {1,1,1,1}; //{0,0,1,1};
-    l_ledLights.setPinsFromArray(input);
+    int[] input = {0,0,1,1};
+    l_ledLights.setRelaysFromArray(input);
   } 
 
   public void auto(){
     int[] input = {0,0,1,0};
-    l_ledLights.setPinsFromArray(input);
+    l_ledLights.setRelaysFromArray(input);
   }
 
   public void enabled(){
     int[] input = {0,0,0,1};
-    l_ledLights.setPinsFromArray(input);
+    l_ledLights.setRelaysFromArray(input);
   }
 
   public void disabled(){
     int[] input = {0,0,0,0};
-    l_ledLights.setPinsFromArray(input);
+    l_ledLights.setRelaysFromArray(input);
   }
 
   public void defense(){
     int[] input = {0,1,0,1};
-    l_ledLights.setPinsFromArray(input);
+    l_ledLights.setRelaysFromArray(input);
   }
 
   public void charge(){
     int[] input = {0,1,1,0};
-    l_ledLights.setPinsFromArray(input);
+    l_ledLights.setRelaysFromArray(input);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

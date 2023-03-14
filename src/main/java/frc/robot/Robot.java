@@ -33,6 +33,7 @@ public class Robot extends TimedRobot {
     private RobotContainer robotContainer;
 
     private Command autonomousCommand;
+    private boolean inAuto;
 
     private ControlVacuum t_ControlVacuum;
     private RotateArm t_RotateArm;

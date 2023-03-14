@@ -57,6 +57,7 @@ import frc.robot.commands.resetGyro;
 import frc.robot.commands.AprilTagDrive;
 import frc.robot.commands.ArmToPosition;
 import frc.robot.commands.AutoTesting;
+import frc.robot.commands.PlaceAndBack;
 import frc.robot.commands.ControlArmPiston;
 //import frc.robot.commands.ControlNewIntake;
 import frc.robot.commands.ControlShooterMotor;
@@ -214,7 +215,7 @@ public class RobotContainer {
 
         SmartDashboard.putNumber("Initialized", 1);
         drive.resetPose(new Pose2d(0, 0, new Rotation2d(0)));
-        return new AutoTesting(drive, t_arm, t_vacuum);
+        return new PlaceAndBack(drive, t_arm, t_vacuum);
         // return new CharacterizeDrive(drive);
         //return new LeftDriveBack(drive, t_shooter, t_intake, t_feeder, t_limelight); 
         //return new OneShotAuto(drive, t_shooter, t_intake, t_feeder, t_limelight); 

@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.Relay;
 
 
@@ -19,23 +18,24 @@ import edu.wpi.first.wpilibj.Relay;
 public class LedLights extends SubsystemBase {
   /** Creates a new Arm. */
 
+  private final Relay relayOne = new Relay(0);
+  private final Relay relayTwo = new Relay(1);
+  private boolean relayOneState; 
+  private boolean relayTwoState;
 
-  public DigitalOutput DIO0 = new DigitalOutput(0);
-  public DigitalOutput DIO1 = new DigitalOutput(1);
-  // public DigitalOutput DIO2 = new DigitalOutput(2);
-  // public DigitalOutput DIO3 = new DigitalOutput(3);
+  //Led Spesfic States
+  private boolean coneGiveState;
 
-
-
-
- 
 
   //Arm Encoder Positions:
   //Lowest Position: 217
   //Upper Position: 17-18
   //Straight Down: 200
 
- 
+  public LedLights() {
+    relayOneState = false;
+    relayTwoState = false;
+  }
     
     
 
@@ -46,7 +46,15 @@ public class LedLights extends SubsystemBase {
     public boolean[] convertToBoolean(int[] input){
         // Flip the array so that its inverted, because most significant bit is first currently
         // Example: [1,0,1,0] -> [0,1,0,1]
-
+        int[] flippedArray = new int[4];
+        for(int i = 0; i < 4; i++){
+            if(input[i] == 1){
+                flippedArray[i] = 0;
+            }
+            else{
+                flippedArray[i] = 1;
+            }
+        }
 
         boolean[] output = new boolean[4];
         for(int i = 0; i < 4; i++){
@@ -61,15 +69,59 @@ public class LedLights extends SubsystemBase {
     }    
     
     
-  
-   
-
-   public void setPinsFromArray(int[] input){
+   private void setRelayOneState(int[] input) {
+    // Get the boolean array from the input array
     boolean[] output = convertToBoolean(input);
-    DIO0.set(output[0]);
-    DIO1.set(output[1]);
-    // DIO2.set(output[2]);
-    // DIO3.set(output[3]);
+    Integer bitOne = 2;
+    Integer bitTwo = 3;
+
+    // Bit One and Two, these can be independently on or both on or both off
+    if(output[bitOne] == true && output[bitTwo] == true){
+        //If both bits are on set both forward and reverse to on
+        relayOne.set(Relay.Value.kOn);
+    }
+    else if(output[bitOne] == false && output[bitTwo] == false){
+        //If both bits are off set both forward and reverse to off
+        relayOne.set(Relay.Value.kOff);
+    }
+    else if(output[bitOne] == true && output[bitTwo] == false){
+            //If bit one is on and bit two is off set forward to on 
+        relayOne.set(Relay.Value.kForward);
+    } else if(output[bitOne] == false && output[bitTwo] == true){
+        //If bit one is off and bit two is on set reverse to on
+        relayOne.set(Relay.Value.kReverse);
+    }
+   }
+   
+   public void setRelayTwoState(int[] input) {
+    // Get the boolean array from the input array
+    boolean[] output = convertToBoolean(input);
+    Integer bitThree = 0;
+    Integer bitFour = 1;
+
+    // Bit Three and Four, these can be independently on or both on or both off
+    if(output[bitThree] == true && output[bitFour] == true){
+        //If both bits are on set both forward and reverse to on
+        relayTwo.set(Relay.Value.kOn);
+    }
+    else if(output[bitThree] == false && output[bitFour] == false){
+        //If both bits are off set both forward and reverse to off
+        relayTwo.set(Relay.Value.kOff);
+    }
+    else if(output[bitThree] == true && output[bitFour] == false){
+            //If bit one is on and bit two is off set forward to on 
+        relayTwo.set(Relay.Value.kForward);
+    } else if(output[bitThree] == false && output[bitFour] == true){
+        //If bit one is off and bit two is on set reverse to on
+        relayTwo.set(Relay.Value.kReverse);
+    }
+
+   
+   }
+
+   public void setRelaysFromArray(int[] input){
+       setRelayOneState(input);
+       setRelayTwoState(input);
    }
     
 
