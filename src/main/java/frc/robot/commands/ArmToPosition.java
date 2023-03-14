@@ -30,7 +30,9 @@ public class ArmToPosition extends CommandBase {
 
   private double offset = 1;
   //ArmFeedForward feedforward = new ArmFeedForward(1, 0, 0)
-  PIDController armPID = new PIDController(0.005, 0.03, 0);
+
+  PIDController armPID = new PIDController(0.005, 0.00, 0.25);
+
   public ArmToPosition(Arm arm, boolean up) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = arm;
@@ -64,7 +66,8 @@ public class ArmToPosition extends CommandBase {
       setpoint = upperCube;
       System.out.println("Setting the position to upper cube");
     }
-    ramp = 0;
+    //ramp = 0;
+    armPID.setTolerance(2);
   }
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -82,12 +85,15 @@ public class ArmToPosition extends CommandBase {
     // else if (!isUp) {
     //   m_arm.runArm(armPID.calculate(m_arm.getArmEncoder(), setpointOne));
     // }
-    if (ramp < 1) {
-      ramp += increment;
-    }
+    //if (ramp < 1) {
+    //  ramp += increment;
+    //}
     
-    if (m_arm.getArmEncoder() < upperLimit || m_arm.getArmEncoder() > lowerLimit)  {
-      m_arm.runArm(0);
+    if (m_arm.getArmEncoder() < upperLimit)  {
+      m_arm.runArm(0.1);
+    }
+    else if(m_arm.getArmEncoder() > lowerLimit) {
+      m_arm.runArm(-0.1);
     }
     else if (position == 3) {
       m_arm.runArm(ramp * -0.3 * armPID.calculate(m_arm.getArmEncoder(), setpoint) );
@@ -119,7 +125,7 @@ public class ArmToPosition extends CommandBase {
        return true;
      }
     else {
-      return false;
+      return armPID.atSetpoint();
     }
 }
 
