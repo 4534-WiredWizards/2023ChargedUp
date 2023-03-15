@@ -20,6 +20,7 @@ public class LedLights extends SubsystemBase {
   /** Creates a new Arm. */
 
 
+  //private DigitalOutput DIO0 = new DigitalOutput(0);
   private DigitalOutput DIO0 = new DigitalOutput(0);
   private DigitalOutput DIO1 = new DigitalOutput(1);
   private DigitalOutput DIO2 = new DigitalOutput(2);

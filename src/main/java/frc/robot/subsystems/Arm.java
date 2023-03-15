@@ -39,8 +39,8 @@ public class Arm extends SubsystemBase {
   //private Solenoid breakPiston;
   //private boolean pistonState;
   private CANCoder armEncoder;
-  private DigitalInput highLimit = new DigitalInput(2);
-  private DigitalInput lowLimit = new DigitalInput(3);
+  private DigitalInput highLimit = new DigitalInput(6);
+  private DigitalInput lowLimit = new DigitalInput(7);
 
   //Arm Encoder Positions:
   //Lowest Position: 217
@@ -71,6 +71,8 @@ public class Arm extends SubsystemBase {
 
   //Arm motor
   public void runArm(double speed){
+      speed = Math.min(speed, 0.4);
+      speed = Math.max(speed, -0.4);
       armMotorOne.set(TalonFXControlMode.PercentOutput, speed);
   }
 

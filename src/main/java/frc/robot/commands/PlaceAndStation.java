@@ -13,9 +13,9 @@ import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Vacuum;
 
-public class PlaceAndBack extends SequentialCommandGroup {
-  /** Creates a new AutoTesting. */
-  public PlaceAndBack(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
+public class PlaceAndStation extends SequentialCommandGroup {
+  /** Creates a new PlaceAndStation. */
+  public PlaceAndStation(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
     // Use addRequirements() here to declare subsystem dependencies.
     addCommands(
         // new SetTongue(arm, true),
@@ -28,10 +28,9 @@ public class PlaceAndBack extends SequentialCommandGroup {
         new SuctionControl(vacuum),
         new DoNothing().withTimeout(1),
         new ExtensionPistonControl(arm),
-        new FollowTrajectory(drive, AutoTrajectories.back, true),
         new ParallelCommandGroup(
           new AutoArm(arm, 3).withTimeout(3),
-          new FollowTrajectory(drive, AutoTrajectories.exitZone, true)
+          new FollowTrajectory(drive, AutoTrajectories.onStation, true)
         )
        
        
@@ -41,14 +40,5 @@ public class PlaceAndBack extends SequentialCommandGroup {
 
 }
 
-//Positive y is left
-//Positive x is forward
 
-//April Tags 2 and 7
-//30 forward 
-//30 backward
-//90 right
-//100 back
-//90 left
-//44 ward
 
