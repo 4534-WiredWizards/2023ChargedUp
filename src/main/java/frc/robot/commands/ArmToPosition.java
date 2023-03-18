@@ -17,13 +17,13 @@ public class ArmToPosition extends CommandBase {
   private int position;
   private double upperLimit = -150;
   private double lowerLimit = 0;
-  private final double upperCone = -125;
+  private final double upperCone = -140;
   private final double middleCone = -105; 
   private final double lowerPos = -5;
-  private final double station = -115; 
+  private final double station = -126; 
   private final double upperCube = -130;
 
-  
+  private boolean inAuto = false;
   private double setpoint;
   private double ramp;
   private double increment = 0.2;
@@ -47,11 +47,19 @@ public class ArmToPosition extends CommandBase {
     addRequirements(m_arm);
   }
 
+  public ArmToPosition(Arm arm, int pos, boolean auto) {
+    // Use addRequirements() here to declare subsystem dependencies.
+    m_arm = arm;
+    position = pos;
+    inAuto = auto;
+    addRequirements(m_arm);
+  }
+
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    if (position == 5) {
-      setpoint = upperCone; 
+    if (position == 1) {
+      setpoint = upperCube;
     }
     else if (position == 2) {
       setpoint = station;
@@ -62,13 +70,14 @@ public class ArmToPosition extends CommandBase {
     else if (position == 4) {
       setpoint = middleCone;
     }
-    else if (position == 1) {
-      setpoint = upperCube;
-      System.out.println("Setting the position to upper cube");
+    else if (position == 5) {
+      setpoint = upperCone; 
     }
+    
+    
     //ramp = 0;
     armPID = new PIDController(0.05, 0.01, 0.01);
-    armPID.setTolerance(2);
+    armPID.setTolerance(1);
   }
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -108,7 +117,7 @@ public class ArmToPosition extends CommandBase {
   public void end(boolean interrupted) {
     m_arm.runArm(0);
     System.err.println("Command has ended");
-    if(!interrupted) {
+    if(!interrupted && !inAuto) {
       CommandScheduler.getInstance().schedule(new RotateArm(m_arm, true));
     }
   }

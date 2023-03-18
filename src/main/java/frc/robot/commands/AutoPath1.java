@@ -25,7 +25,7 @@ public class AutoPath1 extends SequentialCommandGroup {
       //new ReleasePiece(vacuum),
       new ParallelCommandGroup(
         new RotateArm(arm, false).withTimeout(2),
-        new FollowTrajectory(drive, AutoTrajectories.exitZone, true)
+        new FollowTrajectory(drive, AutoTrajectories.exitZoneLeft, true)
       )
       //new FollowTrajectory(drive.AutoTrajectories.balance, true);
     );

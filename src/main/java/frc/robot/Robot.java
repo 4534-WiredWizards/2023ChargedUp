@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.autonomous.AutoTrajectories;
 import frc.robot.commands.ControlVacuum;
 import frc.robot.commands.RotateArm;
+import frc.robot.commands.SetTongue;
 import frc.robot.subsystems.DistanceEstimator;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Limelight;
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot {
 
     private ControlVacuum t_ControlVacuum;
     private RotateArm t_RotateArm;
+    private SetTongue t_SetTongue;
 
     //private ChooseAuto autoChooser = new ChooseAuto();
   //String trajectoryJSON = "paths/Sam.wpilib.json";
@@ -48,6 +50,7 @@ public class Robot extends TimedRobot {
   private Command CenterDriveBack;
   private Command LeftDriveBack;
   private Command RightDriveBack;
+   
   public SendableChooser<Command> autoChooser;
   
     @Override
@@ -58,14 +61,15 @@ public class Robot extends TimedRobot {
         //Initializes Control Vacuum Command so that the loop of checking the solenoid states can run
         t_ControlVacuum = new ControlVacuum(robotContainer.t_vacuum);
         t_RotateArm = new RotateArm(robotContainer.t_arm, true);
+        t_SetTongue = new SetTongue(robotContainer.t_arm, true);
       
         autoChooser = new SendableChooser<Command>();
         NetworkTableInstance.getDefault();
         //Added to speed up auto running
         //new AutoTrajectories();
-        UsbCamera fisheye = CameraServer.startAutomaticCapture();
+        //UsbCamera fisheye = CameraServer.startAutomaticCapture();
         // fisheye.setResolution(320, 240);
-        fisheye.setPixelFormat(PixelFormat.kMJPEG);
+        //fisheye.setPixelFormat(PixelFormat.kMJPEG);
         robotContainer.t_pneumatics.setCompressor(true);
 
         robotContainer.t_vacuum.setVacuumState(false);
@@ -129,6 +133,7 @@ public class Robot extends TimedRobot {
 
         if (autonomousCommand != null) {autonomousCommand.cancel();}
         CommandScheduler.getInstance().schedule(t_RotateArm);
+        CommandScheduler.getInstance().schedule(t_SetTongue);
     }
 
     // @Override

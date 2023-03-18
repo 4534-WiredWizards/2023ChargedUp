@@ -61,8 +61,8 @@ public class OperatorControl extends CommandBase {
          * Since joysticks give output from -1 to 1, we multiply the outputs by the max speed
          * Otherwise, our max speed would be 1 meter per second and 1 radian per second
          */
-        if (frc.robot.RobotContainer.m_fancyJoystick.getRawButton(fancyJoystick.l3)) {
-            rotationConstant = 0.3;
+        if (frc.robot.RobotContainer.m_fancyJoystick.getRawButton(fancyJoystick.r1)) {
+            rotationConstant = 0.2;
          }
          else {
             rotationConstant = 1;
@@ -72,7 +72,7 @@ public class OperatorControl extends CommandBase {
 
         // All inputs inverted because initial state is pointed towards drivers!
         
-        double fwdX = -1 * forwardX.getAsDouble();
+        double fwdX =           -1 * forwardX.getAsDouble();
         fwdX = Math.copySign(fwdX, fwdX);
         fwdX = deadbandInputs(fwdX) * Units.feetToMeters(DriveConstants.maxDriveSpeed) * speedScale;
 

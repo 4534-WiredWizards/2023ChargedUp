@@ -9,20 +9,33 @@ import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.autonomous.AutoTrajectories;
 import frc.robot.commands.drivetrain.FollowTrajectory;
-import frc.robot.commands.drivetrain.QuickTurn;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Vacuum;
 
-public class AutoTesting extends SequentialCommandGroup {
+public class PlaceAndBackLeft extends SequentialCommandGroup {
   /** Creates a new AutoTesting. */
-  public AutoTesting(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
+  public PlaceAndBackLeft(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
     // Use addRequirements() here to declare subsystem dependencies.
     addCommands(
-      new FollowTrajectory(drive, AutoTrajectories.toFront, true),
-      new FollowTrajectory(drive, AutoTrajectories.slightBack, true),
-      new QuickTurn(drive, Math.PI),
-      new FollowTrajectory(drive, AutoTrajectories.onStationBack, true)
+        new SetTongue(arm, true),
+        new SuctionControl(vacuum),
+        new DoNothing().withTimeout(1),
+        new ArmToPosition(arm, 1, true).withTimeout(3),
+        new FollowTrajectory(drive, AutoTrajectories.toFront, true),
+        new ExtensionPistonControl(arm),
+        new DoNothing().withTimeout(1),
+        new SuctionControl(vacuum),
+        new DoNothing().withTimeout(1),
+        new ExtensionPistonControl(arm),
+        //new FollowTrajectory(drive, AutoTrajectories.back, true),
+        new FollowTrajectory(drive, AutoTrajectories.exitZoneLeft, true),
+
+        new ArmToPosition(arm, 3, true).withTimeout(3)
+        
+       
+       
+
     );
   }
 

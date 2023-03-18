@@ -222,8 +222,8 @@ public class Constants {
 
     public static final class AutoConstants {
 
-        public static final double maxVelMetersPerSec = 2; //4.5
-        public static final double maxAccelMetersPerSecondSq = 1; //1.95
+        public static final double maxVelMetersPerSec = 3; //2
+        public static final double maxAccelMetersPerSecondSq = 1.5; //1 //1.95
         public static final double positionOneShootingAngle = 90;
         public static final double positionTwoShootingAngle = 90;
 

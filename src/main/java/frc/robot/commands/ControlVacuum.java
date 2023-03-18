@@ -9,7 +9,7 @@ import frc.robot.subsystems.Vacuum;
 
 public class ControlVacuum extends CommandBase {
   /** Creates a new ControlVacuum. */
-  private double speed = 0.5;
+  private double speed = 0.70;
   Vacuum m_vacuum;
   private double voltage_max = 4;
   public ControlVacuum(Vacuum vacuum) {
@@ -17,7 +17,7 @@ public class ControlVacuum extends CommandBase {
     m_vacuum =  vacuum;
   }
 
-  // Called when the command is initially scheduled.
+  // Called when the command is initially sch9duled.
   @Override
   public void initialize() {}
 
@@ -28,6 +28,7 @@ public class ControlVacuum extends CommandBase {
 
       // if (m_vacuum.getSensorVoltage() < voltage_max) {
         m_vacuum.setVacuumSpeed(speed);
+        m_vacuum.setVacuumState(true);
       // }
       // else {
         // m_vacuum.setVacuumSpeed(0);
@@ -37,6 +38,7 @@ public class ControlVacuum extends CommandBase {
 
     else {
       m_vacuum.setVacuumSpeed(0);
+      m_vacuum.setVacuumState(false);
     }
   }
 

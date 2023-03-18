@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.autonomous.AutoTrajectories;
 import frc.robot.commands.drivetrain.FollowTrajectory;
+import frc.robot.commands.drivetrain.QuickTurn;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Vacuum;
@@ -30,8 +31,10 @@ public class PlaceAndStation extends SequentialCommandGroup {
         new ExtensionPistonControl(arm),
         new ParallelCommandGroup(
           new AutoArm(arm, 3).withTimeout(3),
-          new FollowTrajectory(drive, AutoTrajectories.onStation, true)
-        )
+          new QuickTurn(drive, Math.PI)
+        ),
+        new FollowTrajectory(drive, AutoTrajectories.onStationBack, true)
+
        
        
 

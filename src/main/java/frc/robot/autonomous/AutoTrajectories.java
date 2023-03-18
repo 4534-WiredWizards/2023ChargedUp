@@ -273,7 +273,7 @@ public class AutoTrajectories {
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(25), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(27), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
             config
     );
 
@@ -288,7 +288,7 @@ public class AutoTrajectories {
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-25), Units.inchesToMeters(-2), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(-10), Units.inchesToMeters(-2), new Rotation2d(Math.toRadians(0))),
             config
     );
 
@@ -325,7 +325,7 @@ public class AutoTrajectories {
 
     
 
-    public static Trajectory exitZone =
+    public static Trajectory exitZoneLeft =
     TrajectoryGenerator.generateTrajectory(
             new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
             List.of(
@@ -336,9 +336,26 @@ public class AutoTrajectories {
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-120), Units.inchesToMeters(30), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(-210), Units.inchesToMeters(10), new Rotation2d(Math.toRadians(0))),
             config
     );
+
+    public static Trajectory exitZoneRight =
+    TrajectoryGenerator.generateTrajectory(
+            new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+            List.of(
+                //new Translation2d(Units.inchesToMeters(60), new Rotation2d(0)),
+                //new Translation2d(Units.inchesToMeters(10), new Rotation2d(-90)),
+                //new Translation2d(Units.inchesToMeters(10), new Rotation2d(0))
+                //new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(60))
+                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
+                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
+            ),
+            new Pose2d(Units.inchesToMeters(-210), Units.inchesToMeters(-10), new Rotation2d(Math.toRadians(0))),
+            config
+    );
+
+    
 
     public static Trajectory moveLeft =
     TrajectoryGenerator.generateTrajectory(
@@ -355,13 +372,33 @@ public class AutoTrajectories {
             config
     );
 
-    public static Trajectory onStation =
+    public static Trajectory onStationFront =
     TrajectoryGenerator.generateTrajectory(
             new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
             List.of(
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
             new Pose2d(Units.inchesToMeters(-60), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+            config
+    );
+
+    public static Trajectory slightBack =
+    TrajectoryGenerator.generateTrajectory(
+            new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+            List.of(
+                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
+            ),
+            new Pose2d(Units.inchesToMeters(-10), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+            config
+    );
+
+    public static Trajectory onStationBack =
+    TrajectoryGenerator.generateTrajectory(
+            new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+            List.of(
+                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
+            ),
+            new Pose2d(Units.inchesToMeters(-50), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
             config
     );
 

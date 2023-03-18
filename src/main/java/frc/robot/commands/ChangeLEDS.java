@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.LedLights;
 import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ChangeLEDS extends CommandBase {
   /** Creates a new SqueezePincer. */
@@ -32,12 +33,12 @@ public class ChangeLEDS extends CommandBase {
     
     coneGiveState = state;
     if(coneGiveState){
-        charge();
+      coneGive();
         // Print to console give code
-        // System.out.print("Setting LEDs to cone patern");
+        System.out.print("Setting LEDs to cone patern");
     }else{
         cubeGive();
-        // System.out.print("Setting LEDs to cube patern");
+        System.out.print("Setting LEDs to cube patern");
     }
   }
 
@@ -48,13 +49,18 @@ public class ChangeLEDS extends CommandBase {
 
   //Colors
   public void coneGive(){
-    int[] input = {1,1,0,0};
+    int[] input = {1,0,0,0};
     l_ledLights.setPinsFromArray(input);
+    System.out.print("Setting LEDs TO Cone");
+    SmartDashboard.putString("WhatIWant", "Cone");
   }
 
   public void cubeGive(){
-    int[] input = {0,0,1,1};
+    int[] input = {0,1,1,0};
     l_ledLights.setPinsFromArray(input);
+    System.out.print("Setting LEDs TO Cube");
+    SmartDashboard.putString("WhatIWant", "Cube");
+
   } 
 
   public void auto(){

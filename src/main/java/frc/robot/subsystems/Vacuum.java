@@ -32,7 +32,9 @@ public class Vacuum extends SubsystemBase {
   private boolean solenoid2State;
 
   
-  private AnalogInput vacumeSensor = new AnalogInput(0);
+  private AnalogInput vacuumSensorTop = new AnalogInput(2);
+  private AnalogInput vacuumSensorBottom = new AnalogInput(3);
+
 
 
 
@@ -75,7 +77,7 @@ public class Vacuum extends SubsystemBase {
 
   public void setVacuumState(boolean state) {
     vacuumState = state;
-    pd.setSwitchableChannel(state);
+    //pd.setSwitchableChannel(state);
   }
 
 
@@ -98,21 +100,51 @@ public class Vacuum extends SubsystemBase {
     solenoid2.set(state);
   }
 
-  
-
 
   //Analog vacumeSensor 
-  public double getSensorRaw() {
-    return vacumeSensor.getValue();
+  public double getTopSensorRaw() {
+    return vacuumSensorTop.getValue();
   }
 
-  public double getSensorVoltage() {
-    return vacumeSensor.getVoltage();
+  public double getTopSensorVoltage() {
+    return vacuumSensorTop.getVoltage();
+  }
+
+  public double getBottomSensorRaw() {
+    return vacuumSensorBottom.getValue();
+  }
+
+  public double getBottomSensorVoltage() {
+    return vacuumSensorBottom.getVoltage();
+  }
+
+  public boolean getTopSensorState() {
+    if (getTopSensorVoltage() > 3) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  public boolean getBottomSensorState() {
+    if (getBottomSensorVoltage() > 3) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   public void updateVacuumSensor(){
-    SmartDashboard.putNumber("Vacuum Sensor Raw: ", getSensorRaw());
-    SmartDashboard.putNumber("Vacuum Sensor Voltage: ", getSensorVoltage());
+    SmartDashboard.putNumber("Top Vacuum Sensor Raw: ", getTopSensorRaw());
+    SmartDashboard.putNumber("Top Vacuum Sensor Voltage: ", getTopSensorVoltage());
+    SmartDashboard.putNumber("Bottom Vacuum Sensor Raw: ", getBottomSensorRaw());
+    SmartDashboard.putNumber("Bottom Vacuum Sensor Voltage: ", getBottomSensorVoltage());
+    SmartDashboard.putBoolean("Top Vacuum: ", getTopSensorState());
+    SmartDashboard.putBoolean("Bottom Vacuum: ", getBottomSensorState());
+    SmartDashboard.putBoolean("Vacuum On: ", getVacuumState());
+
 
   }
 
