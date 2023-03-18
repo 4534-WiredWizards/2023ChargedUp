@@ -78,6 +78,34 @@ public class ChangeLEDS extends CommandBase {
     l_ledLights.setPinsFromArray(input);
   }
 
+  public void enabled(){
+    int[] input = {0,0,1,0};
+    l_ledLights.setPinsFromArray(input);
+  }
+
+  public void auto(){
+    int[] input = {0,1,0,0};
+    l_ledLights.setPinsFromArray(input);
+  }
+
+  public void cubeGive(){
+    int[] input = {0,1,1,0};
+    l_ledLights.setPinsFromArray(input);
+  } 
+
+  public void coneGive(){
+    int[] input = {1,0,0,0};
+    l_ledLights.setPinsFromArray(input);
+  }
+
+
+
+
+
+  
+
+ 
+
   public void defense(){
     int[] input = {0,1,0,1};
     l_ledLights.setPinsFromArray(input);
