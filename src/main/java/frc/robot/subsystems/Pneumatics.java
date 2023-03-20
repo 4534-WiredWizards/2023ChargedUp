@@ -16,7 +16,7 @@ public class Pneumatics extends SubsystemBase {
   private Compressor compressor;
   /** Creates a new Pneumatics. */
   public Pneumatics() {
-    compressor = new Compressor(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH);
+    compressor = new Compressor(PneumaticChannels.PCMId, PneumaticsModuleType.CTREPCM);
     addChild("Compression", compressor);
   }
 

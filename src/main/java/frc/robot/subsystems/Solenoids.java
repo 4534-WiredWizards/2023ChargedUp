@@ -14,7 +14,7 @@ public class Solenoids extends SubsystemBase {
   private Solenoid piston;
   public Solenoids() {
     // initializes new solenoid object
-    piston = new Solenoid(0, PneumaticsModuleType.REVPH,  1);
+    piston = new Solenoid(0, PneumaticsModuleType.CTREPCM,  1);
     addChild("piston", piston);
   }
 
