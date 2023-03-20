@@ -72,7 +72,7 @@ public class OperatorControl extends CommandBase {
 
         // All inputs inverted because initial state is pointed towards drivers!
         
-        double fwdX =           -1 * forwardX.getAsDouble();
+        double fwdX = -1 * forwardX.getAsDouble();
         fwdX = Math.copySign(fwdX, fwdX);
         fwdX = deadbandInputs(fwdX) * Units.feetToMeters(DriveConstants.maxDriveSpeed) * speedScale;
 
