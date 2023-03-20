@@ -98,8 +98,8 @@ public class SwerveModule extends SubsystemBase {
         //configure the CANCoder to output in unsigned (wrap around from 360 to 0 degrees)
         canCoder.configAbsoluteSensorRange(AbsoluteSensorRange.Unsigned_0_to_360);
 
-        driveMotor.setClosedLoopRampRate(0.15);
-        rotationMotor.setClosedLoopRampRate(0.08);
+        driveMotor.setClosedLoopRampRate(0.5); //0.15
+        rotationMotor.setClosedLoopRampRate(0.15); //0.08
 
     }
 

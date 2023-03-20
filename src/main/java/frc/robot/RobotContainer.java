@@ -60,6 +60,7 @@ import frc.robot.commands.ArmToPosition;
 import frc.robot.commands.AutoTesting;
 import frc.robot.commands.PlaceAndBackLeft;
 import frc.robot.commands.PlaceAndBackRight;
+import frc.robot.commands.PlaceAndStation;
 import frc.robot.commands.ControlArmPiston;
 //import frc.robot.commands.ControlNewIntake;
 import frc.robot.commands.ControlShooterMotor;
@@ -172,7 +173,7 @@ public class RobotContainer {
         //new JoystickButton(m_joystick, InputDevices.btn_a).whileTrue(new ControlShooterMotor(t_destimator));
 
         new JoystickButton(m_fancyJoystick, fancyJoystick.l1).onTrue(new resetGyro(drive));
-        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).onTrue(new QuickTurn(drive, Math.toRadians(90)));
+        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).onTrue(new QuickTurn(drive, Math.toRadians(180)));
 
         //Suctions
         //new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SecondSuction(t_vacuum));
@@ -218,9 +219,9 @@ public class RobotContainer {
 
         SmartDashboard.putNumber("Initialized", 1);
         drive.resetPose(new Pose2d(0, 0, new Rotation2d(0)));
-        return new PlaceAndBackLeft(drive, t_arm, t_vacuum);
+        //return new PlaceAndBackLeft(drive, t_arm, t_vacuum);
         //return new AutoTesting(drive, t_arm, t_vacuum);
-        //return new PlaceAndBackRight(drive, t_arm, t_vacuum);
+        return new PlaceAndBackRight(drive, t_arm, t_vacuum);
         // return new CharacterizeDrive(drive);
         //return new LeftDriveBack(drive, t_shooter, t_intake, t_feeder, t_limelight); 
         //return new OneShotAuto(drive, t_shooter, t_intake, t_feeder, t_limelight); 
