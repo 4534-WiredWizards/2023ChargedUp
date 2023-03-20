@@ -49,8 +49,8 @@ public class Vacuum extends SubsystemBase {
     // Solenoid deffintion
     solenoid1State = false;
     solenoid2State = false;
-    solenoid1 = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH, 1);
-    solenoid2 = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH, 0);
+    solenoid1 = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.CTREPCM, 1);
+    solenoid2 = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.CTREPCM, 0);
 
     //Solenoid 1 is for the vacuum motor
     //Solenoid 2 is the old piston, not currently being used

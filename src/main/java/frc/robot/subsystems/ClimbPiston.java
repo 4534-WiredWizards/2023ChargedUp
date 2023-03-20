@@ -17,7 +17,7 @@ public class ClimbPiston extends SubsystemBase {
   //private Solenoid retractSolenoid;
 
   public ClimbPiston() {
-    deploySolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH, PneumaticChannels.deploySolenoidChannel);
+    deploySolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.CTREPCM, PneumaticChannels.deploySolenoidChannel);
     //retractSolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH, PneumaticChannels.retractSolenoidChannel);
   }
 

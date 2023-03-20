@@ -55,9 +55,9 @@ public class Arm extends SubsystemBase {
     eSolenoidState = false;
     gSolenoidState = false;
     pSolenoidState = false;
-    extensionSolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH, 3);
-    gripSolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH, 4);
-    pincerSolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.REVPH, 2);
+    extensionSolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.CTREPCM, 3);
+    gripSolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.CTREPCM, 4);
+    pincerSolenoid = new Solenoid(PneumaticChannels.PCMId, PneumaticsModuleType.CTREPCM, 2);
 
 
 
