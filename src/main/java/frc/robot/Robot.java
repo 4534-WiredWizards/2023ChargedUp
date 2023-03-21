@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.autonomous.AutoTrajectories;
+import frc.robot.commands.ControlCompressor;
 import frc.robot.commands.ControlVacuum;
 import frc.robot.commands.RotateArm;
 import frc.robot.commands.SetTongue;
@@ -39,6 +40,7 @@ public class Robot extends TimedRobot {
     private ControlVacuum t_ControlVacuum;
     private RotateArm t_RotateArm;
     private SetTongue t_SetTongue;
+    private ControlCompressor t_ControlCompressor;
 
     //private ChooseAuto autoChooser = new ChooseAuto();
   //String trajectoryJSON = "paths/Sam.wpilib.json";
@@ -93,8 +95,9 @@ public class Robot extends TimedRobot {
         robotContainer.t_pneumatics.updatePressureSensor();
 
         //Starts checking for updates to solonides
-        
+    
         t_ControlVacuum.execute();
+        t_ControlCompressor.execute();
         //t_RotateArm.execute();
 
         // SrobotContainer.t_shooter.updateShooter();

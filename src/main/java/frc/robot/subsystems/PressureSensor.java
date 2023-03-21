@@ -20,9 +20,14 @@ public class PressureSensor extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
+  public double getAnalogPressure() {
+    return pressureSensor.getValue();
+    //This does not return the actual pressure. It returns a value that is proportional to the pressure.
+  }
+
   public double getPressure() {
     return pressureSensor.getValue()*(200/Math.pow(2, 12));
-    //This does not return the actual pressure. It returns a value that is proportional to the pressure.
+    //Returns pressure in psi
   }
 
 
