@@ -5,10 +5,11 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class PressureSensor extends SubsystemBase {
-  /** Creates a new PressureSensor. */
+  /** Creates a new Pr  essureSensor. */
   AnalogInput pressureSensor;
   public PressureSensor() {
     pressureSensor = new AnalogInput(0);

@@ -63,9 +63,11 @@ public class OperatorControl extends CommandBase {
          */
         if (frc.robot.RobotContainer.m_fancyJoystick.getRawButton(fancyJoystick.r1)) {
             rotationConstant = 0.2;
+            //Addtionaly add support for the left, right, forward, and backward speed slow downs
          }
          else {
             rotationConstant = 1;
+
          }
 
         double speedScale = speedAdjust.getAsDouble()*DriveConstants.speedScaleSlope+DriveConstants.speedScaleOffset;
