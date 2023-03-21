@@ -21,7 +21,7 @@ public class PressureSensor extends SubsystemBase {
   }
 
   public double getPressure() {
-    return pressureSensor.getValue();
+    return pressureSensor.getValue()*(200/Math.pow(2, 12));
     //This does not return the actual pressure. It returns a value that is proportional to the pressure.
   }
 
