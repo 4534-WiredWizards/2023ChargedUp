@@ -64,6 +64,7 @@ public class Robot extends TimedRobot {
         t_ControlVacuum = new ControlVacuum(robotContainer.t_vacuum);
         t_RotateArm = new RotateArm(robotContainer.t_arm, true);
         t_SetTongue = new SetTongue(robotContainer.t_arm, true);
+        t_ControlCompressor = new ControlCompressor(robotContainer.t_pneumatics, robotContainer.t_psensor);
       
         autoChooser = new SendableChooser<Command>();
         NetworkTableInstance.getDefault();
@@ -92,7 +93,7 @@ public class Robot extends TimedRobot {
         CommandScheduler.getInstance().run();
         robotContainer.drive.updateSmartDashboard();
 
-        robotContainer.t_pneumatics.updatePressureSensor();
+        robotContainer.t_psensor.updatePressureSensor();
 
         //Starts checking for updates to solonides
     

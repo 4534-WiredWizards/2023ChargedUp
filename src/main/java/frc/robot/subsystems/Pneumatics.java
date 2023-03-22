@@ -13,12 +13,10 @@ import frc.robot.subsystems.PressureSensor;
 
 public class Pneumatics extends SubsystemBase {
 
-  private PressureSensor t_presureSensor;
   
   private Compressor compressor;
   /** Creates a new Pneumatics. */
   public Pneumatics() {
-    t_presureSensor= new PressureSensor();
     compressor = new Compressor(PneumaticChannels.PCMId, PneumaticsModuleType.CTREPCM);
     addChild("Compression", compressor);
   }
@@ -42,9 +40,5 @@ public class Pneumatics extends SubsystemBase {
     }
   }
 
-  public void updatePressureSensor() {
-    //System.out.println("Updating pressure");
-    // System.out.println("Pressure:" + compressor.getPressure());
-    SmartDashboard.putNumber("Pressure", t_presureSensor.getPressure());
-  }
+  
 }
