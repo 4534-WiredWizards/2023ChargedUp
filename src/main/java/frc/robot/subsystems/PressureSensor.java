@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class PressureSensor extends SubsystemBase {
@@ -28,6 +29,13 @@ public class PressureSensor extends SubsystemBase {
   public double getPressure() {
     return pressureSensor.getValue()*(200/Math.pow(2, 12))-5;
     //Returns pressure in psi
+  }
+
+  public void updatePressureSensor() {
+    //System.out.println("Updating pressure");
+    // System.out.println("Pressure:" + compressor.getPressure());
+    SmartDashboard.putNumber("Pressure", getPressure());
+    //needs to be in pressuresensor
   }
 
 

@@ -93,7 +93,7 @@ public class Robot extends TimedRobot {
         CommandScheduler.getInstance().run();
         robotContainer.drive.updateSmartDashboard();
 
-        robotContainer.t_pneumatics.updatePressureSensor();
+        robotContainer.t_psensor.updatePressureSensor();
 
         //Starts checking for updates to solonides
     
