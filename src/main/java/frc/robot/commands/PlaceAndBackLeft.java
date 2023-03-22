@@ -18,12 +18,15 @@ public class PlaceAndBackLeft extends SequentialCommandGroup {
   public PlaceAndBackLeft(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
     // Use addRequirements() here to declare subsystem dependencies.
     addCommands(
-        new SetTongue(arm, true),
+        //new SetTongue(arm, true),
         new SuctionControl(vacuum),
-        new DoNothing().withTimeout(1),
-        new ArmToPosition(arm, 1, true).withTimeout(3),
-        new FollowTrajectory(drive, AutoTrajectories.toFront, true),
+        new DoNothing().withTimeout(0.2),
         new ExtensionPistonControl(arm),
+        new DoNothing().withTimeout(0.2),
+        new ExtensionPistonControl(arm),
+        new DoNothing().withTimeout(0.2),
+        new ArmToPosition(arm, 5, true).withTimeout(3),
+        new FollowTrajectory(drive, AutoTrajectories.toFront, true),
         new DoNothing().withTimeout(1),
         new SuctionControl(vacuum),
         new DoNothing().withTimeout(1),
