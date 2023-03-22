@@ -46,5 +46,6 @@ public class Pneumatics extends SubsystemBase {
     //System.out.println("Updating pressure");
     // System.out.println("Pressure:" + compressor.getPressure());
     SmartDashboard.putNumber("Pressure", t_presureSensor.getPressure());
+    
   }
 }

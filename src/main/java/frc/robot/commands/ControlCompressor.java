@@ -13,10 +13,10 @@ public class ControlCompressor extends CommandBase {
   Pneumatics m_pneumatics;
   PressureSensor m_sensor;
   private boolean firstCharge;
-  public ControlCompressor(Pneumatics pneumatics) {
+  public ControlCompressor(Pneumatics pneumatics, PressureSensor psensor) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_pneumatics = new Pneumatics();
-    m_sensor = new PressureSensor();
+    m_pneumatics = pneumatics;
+    m_sensor = psensor;
     firstCharge = true;
   }
 

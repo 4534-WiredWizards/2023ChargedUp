@@ -34,6 +34,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.LedLights;
 import frc.robot.subsystems.Vacuum;
 import frc.robot.subsystems.Pneumatics;
+import frc.robot.subsystems.PressureSensor;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.DistanceEstimator;
 import frc.robot.subsystems.Limelight;
@@ -95,6 +96,7 @@ public class RobotContainer {
     public Vacuum t_vacuum = new Vacuum();
     public Arm t_arm = new Arm();
     public LedLights l_ledLights = new LedLights();
+    public PressureSensor t_psensor = new PressureSensor();
     //public NewIntake t_newintake = new NewIntake();
 
     
