@@ -63,7 +63,7 @@ public class Robot extends TimedRobot {
         //Initializes Control Vacuum Command so that the loop of checking the solenoid states can run
         t_ControlVacuum = new ControlVacuum(robotContainer.t_vacuum);
         t_RotateArm = new RotateArm(robotContainer.t_arm, true);
-        t_SetTongue = new SetTongue(robotContainer.t_arm, true);
+        t_SetTongue = new SetTongue(robotContainer.t_arm, false);
         t_ControlCompressor = new ControlCompressor(robotContainer.t_pneumatics, robotContainer.t_psensor);
       
         autoChooser = new SendableChooser<Command>();

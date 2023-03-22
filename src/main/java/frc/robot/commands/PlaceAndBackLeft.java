@@ -25,15 +25,16 @@ public class PlaceAndBackLeft extends SequentialCommandGroup {
         new DoNothing().withTimeout(0.2),
         new ExtensionPistonControl(arm),
         new DoNothing().withTimeout(0.2),
-        new ArmToPosition(arm, 5, true).withTimeout(3),
+        new GripPistonControl(arm),
+        new ArmToPosition(arm, 1, true).withTimeout(3),
         new FollowTrajectory(drive, AutoTrajectories.toFront, true),
-        new DoNothing().withTimeout(1),
+        new ExtensionPistonControl(arm),
+        new DoNothing().withTimeout(0.2),
         new SuctionControl(vacuum),
-        new DoNothing().withTimeout(1),
+        new DoNothing().withTimeout(0.2),
         new ExtensionPistonControl(arm),
         //new FollowTrajectory(drive, AutoTrajectories.back, true),
         new FollowTrajectory(drive, AutoTrajectories.exitZoneLeft, true),
-
         new ArmToPosition(arm, 3, true).withTimeout(3)
         
        

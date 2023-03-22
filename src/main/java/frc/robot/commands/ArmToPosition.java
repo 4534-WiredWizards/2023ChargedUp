@@ -17,11 +17,12 @@ public class ArmToPosition extends CommandBase {
   private int position;
   private double upperLimit = -150;
   private double lowerLimit = 0;
-  private final double upperCone = -140;
-  private final double middleCone = -105; 
+  private final double upperCone = -130;
+  private final double middleCone = -110; 
   private final double lowerPos = -5;
   private final double station = -126; 
   private final double upperCube = -130;
+
 
   private boolean inAuto = false;
   private double setpoint;
@@ -59,7 +60,7 @@ public class ArmToPosition extends CommandBase {
   @Override
   public void initialize() {
     if (position == 1) {
-      setpoint = upperCube;
+      setpoint = upperCone;
     }
     else if (position == 2) {
       setpoint = station;
@@ -71,7 +72,7 @@ public class ArmToPosition extends CommandBase {
       setpoint = middleCone;
     }
     else if (position == 5) {
-      setpoint = upperCone; 
+      setpoint = upperCube; 
     }
     
     

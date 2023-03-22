@@ -20,7 +20,7 @@ public class QuickTurn extends CommandBase {
     private double tolerance = 1;
 
     private final PIDController controller = new PIDController(
-        2.5, 0, 0.25
+        1.0, 0, 0
     );
 
     public QuickTurn(DriveSubsystem subsystem, double desiredAngleRad) {
