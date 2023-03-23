@@ -38,11 +38,12 @@ public class PlaceAndStation extends SequentialCommandGroup {
         //   new AutoArm(arm, 3).withTimeout(3),
         //   new QuickTurn(drive, Math.PI)
         // ),
-        new ParallelCommandGroup(
-          new AutoArm(arm, 3).withTimeout(3),
-          new FollowTrajectory(drive, AutoTrajectories.slightBack, true)
-        ),
-        new FollowTrajectory(drive, AutoTrajectories.onStationFront, true)
+        new FollowTrajectory(drive, AutoTrajectories.slightBack, true)  //Moves 50 inches back to charge station
+        // new ParallelCommandGroup(
+        //   new AutoArm(arm, 3).withTimeout(3),
+        //   new FollowTrajectory(drive, AutoTrajectories.slightBack, true)
+        // ),
+        // new FollowTrajectory(drive, AutoTrajectories.onStationFront, true)
 
        
        
