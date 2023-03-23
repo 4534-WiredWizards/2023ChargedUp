@@ -21,20 +21,28 @@ public class PlaceAndStation extends SequentialCommandGroup {
     addCommands(
         // new SetTongue(arm, true),
         new SuctionControl(vacuum),
-        new DoNothing().withTimeout(0.5),
-        new AutoArm(arm, 4).withTimeout(3),
+        new DoNothing().withTimeout(0.2),
+        new ExtensionPistonControl(arm),
+        new DoNothing().withTimeout(0.2),
+        new ExtensionPistonControl(arm),
+        new DoNothing().withTimeout(0.2),
+        new GripPistonControl(arm),
+        new ArmToPosition(arm, 1, true).withTimeout(3),
         new FollowTrajectory(drive, AutoTrajectories.toFront, true),
         new ExtensionPistonControl(arm),
-        new DoNothing().withTimeout(0.5),
+        new DoNothing().withTimeout(0.2),
         new SuctionControl(vacuum),
-        new DoNothing().withTimeout(0.5),
+        new DoNothing().withTimeout(0.2),
         new ExtensionPistonControl(arm),
-        new FollowTrajectory(drive, AutoTrajectories.slightBack, true),
+        // new ParallelCommandGroup(
+        //   new AutoArm(arm, 3).withTimeout(3),
+        //   new QuickTurn(drive, Math.PI)
+        // ),
         new ParallelCommandGroup(
           new AutoArm(arm, 3).withTimeout(3),
-          new QuickTurn(drive, Math.PI)
+          new FollowTrajectory(drive, AutoTrajectories.slightBack, true)
         ),
-        new FollowTrajectory(drive, AutoTrajectories.onStationBack, true)
+        new FollowTrajectory(drive, AutoTrajectories.onStationFront, true)
 
        
        
