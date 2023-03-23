@@ -19,31 +19,27 @@ public class PlaceAndStation extends SequentialCommandGroup {
   public PlaceAndStation(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
     // Use addRequirements() here to declare subsystem dependencies.
     addCommands(
-        // new SetTongue(arm, true),
-        new SuctionControl(vacuum),
-        new DoNothing().withTimeout(0.2),
-        new ExtensionPistonControl(arm),
-        new DoNothing().withTimeout(0.2),
-        new ExtensionPistonControl(arm),
-        new DoNothing().withTimeout(0.2),
-        new GripPistonControl(arm),
-        new ArmToPosition(arm, 1, true).withTimeout(3),
-        new FollowTrajectory(drive, AutoTrajectories.toFront, true),
-        new ExtensionPistonControl(arm),
-        new DoNothing().withTimeout(0.2),
-        new SuctionControl(vacuum),
-        new DoNothing().withTimeout(0.2),
-        new ExtensionPistonControl(arm),
+      new SuctionControl(vacuum),
+      new DoNothing().withTimeout(1),
+      new GripPistonControl(arm),
+      new DoNothing().withTimeout(0.5),
+      new ArmToPosition(arm, 5, true).withTimeout(3),
+      new FollowTrajectory(drive, AutoTrajectories.toFront, true),
+      new ExtensionPistonControl(arm),
+      new DoNothing().withTimeout(0.5),
+      new SuctionControl(vacuum),
+      new DoNothing().withTimeout(0.5),
+      new ExtensionPistonControl(arm),
         // new ParallelCommandGroup(
         //   new AutoArm(arm, 3).withTimeout(3),
         //   new QuickTurn(drive, Math.PI)
         // ),
-        new FollowTrajectory(drive, AutoTrajectories.slightBack, true)  //Moves 50 inches back to charge station
+      new FollowTrajectory(drive, AutoTrajectories.slightBack, true),  //Moves 50 inches back to charge station
         // new ParallelCommandGroup(
-        //   new AutoArm(arm, 3).withTimeout(3),
+        //new AutoArm(arm, 3).withTimeout(3),
         //   new FollowTrajectory(drive, AutoTrajectories.slightBack, true)
         // ),
-        // new FollowTrajectory(drive, AutoTrajectories.onStationFront, true)
+      new FollowTrajectory(drive, AutoTrajectories.onStationFront, true)
 
        
        

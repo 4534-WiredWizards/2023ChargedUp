@@ -220,7 +220,7 @@ public class RobotContainer {
         drive.resetPose(new Pose2d(0, 0, new Rotation2d(0)));
         //return new PlaceAndBackLeft(drive, t_arm, t_vacuum);
         //return new AutoTesting(drive, t_arm, t_vacuum);
-        return new PlaceAndBackLeft(drive, t_arm, t_vacuum);
+        return new PlaceAndStation(drive, t_arm, t_vacuum);
         // return new CharacterizeDrive(drive);
         //return new LeftDriveBack(drive, t_shooter, t_intake, t_feeder, t_limelight); 
         //return new OneShotAuto(drive, t_shooter, t_intake, t_feeder, t_limelight); 

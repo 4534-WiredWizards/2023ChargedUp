@@ -22,7 +22,7 @@ public class AutoTesting extends SequentialCommandGroup {
       new FollowTrajectory(drive, AutoTrajectories.toFront, true),
       new FollowTrajectory(drive, AutoTrajectories.slightBack, true),
       new QuickTurn(drive, Math.PI),
-      new FollowTrajectory(drive, AutoTrajectories.onStationBack, true)
+      new FollowTrajectory(drive, AutoTrajectories.onStationFront, true)
     );
   }
 

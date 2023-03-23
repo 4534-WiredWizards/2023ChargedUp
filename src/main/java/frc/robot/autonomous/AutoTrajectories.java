@@ -392,15 +392,6 @@ public class AutoTrajectories {
             config
     );
 
-    public static Trajectory onStationBack =
-    TrajectoryGenerator.generateTrajectory(
-            new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
-            List.of(
-                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
-            ),
-            new Pose2d(Units.inchesToMeters(-50), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
-            config
-    );
 
     public static Trajectory test1 =
     TrajectoryGenerator.generateTrajectory(
