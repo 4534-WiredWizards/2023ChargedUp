@@ -27,7 +27,7 @@ public class ControlCompressor extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (firstCharge && m_sensor.getPressure() < 115) {
+    if (firstCharge && m_sensor.getPressure() < 110) {
       m_pneumatics.setCompressor(true);
     }
     else {

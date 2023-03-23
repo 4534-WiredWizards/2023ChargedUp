@@ -27,7 +27,7 @@ public class PressureSensor extends SubsystemBase {
   }
 
   public double getPressure() {
-    return pressureSensor.getValue()*(200/Math.pow(2, 12))-5;
+    return pressureSensor.getValue()*(200/Math.pow(2, 12));
     //Returns pressure in psi
   }
 

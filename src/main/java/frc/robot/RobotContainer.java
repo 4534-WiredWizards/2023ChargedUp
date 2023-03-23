@@ -172,7 +172,7 @@ public class RobotContainer {
         //new JoystickButton(m_joystick, InputDevices.btn_a).whileTrue(new ControlShooterMotor(t_destimator));
 
         new JoystickButton(m_fancyJoystick, fancyJoystick.l1).onTrue(new resetGyro(drive));
-        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).onTrue(new QuickTurn(drive, Math.toRadians(30)));
+        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).onTrue(new QuickTurn(drive, 1));
 
         //Suctions
         //new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SecondSuction(t_vacuum));
@@ -220,7 +220,7 @@ public class RobotContainer {
         drive.resetPose(new Pose2d(0, 0, new Rotation2d(0)));
         //return new PlaceAndBackLeft(drive, t_arm, t_vacuum);
         //return new AutoTesting(drive, t_arm, t_vacuum);
-        return new PlaceAndBackRight(drive, t_arm, t_vacuum);
+        return new PlaceAndBackLeft(drive, t_arm, t_vacuum);
         // return new CharacterizeDrive(drive);
         //return new LeftDriveBack(drive, t_shooter, t_intake, t_feeder, t_limelight); 
         //return new OneShotAuto(drive, t_shooter, t_intake, t_feeder, t_limelight); 

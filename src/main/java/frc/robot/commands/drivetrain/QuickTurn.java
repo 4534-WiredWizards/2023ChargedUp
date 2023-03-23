@@ -17,13 +17,13 @@ public class QuickTurn extends CommandBase {
     private final double desiredAngle;
     private double currentAngle;
     private double oldAngle;
-    private double tolerance = 1;
+    private double tolerance = 5;
 
-    private final PIDController controller = new PIDController(
-        1.0, 0, 0
-    );
+    private PIDController controller;
 
     public QuickTurn(DriveSubsystem subsystem, double desiredAngleRad) {
+
+        //controller = new PIDController(1.0, 0, 0);
 
         drive = subsystem;
 
@@ -31,9 +31,18 @@ public class QuickTurn extends CommandBase {
 
         oldAngle = drive.getGyro();
 
+
     }
 
-    @Override
+    // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {
+    
+    controller = new PIDController(0.5, 0.1, 0);
+    //controller.setTolerance(1);
+  }
+
+    @Override   
     public void execute() {
             
         //calculate the next output for the drive based on the current heading, setpoint being the given angle

@@ -17,7 +17,7 @@ public class ArmToPosition extends CommandBase {
   private int position;
   private double upperLimit = -150;
   private double lowerLimit = 0;
-  private final double upperCone = -130;
+  private final double upperCone = -126;
   private final double middleCone = -110; 
   private final double lowerPos = -5;
   private final double station = -126; 
