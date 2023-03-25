@@ -13,11 +13,13 @@ public class ControlCompressor extends CommandBase {
   Pneumatics m_pneumatics;
   PressureSensor m_sensor;
   private boolean firstCharge;
+  private boolean fullyCharged;
   public ControlCompressor(Pneumatics pneumatics, PressureSensor psensor) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_pneumatics = pneumatics;
     m_sensor = psensor;
     firstCharge = true;
+    fullyCharged = false;
   }
 
   // Called when the command is initially scheduled.
@@ -32,7 +34,11 @@ public class ControlCompressor extends CommandBase {
     }
     else {
       firstCharge = false;
-      if (m_sensor.getPressure() < 60) {
+      if (m_sensor.getPressure() < 60 || fullyCharged == false) {
+        fullyCharged = false;
+        if (m_sensor.getPressure() >= 110) {
+          fullyCharged = true;
+        }
         m_pneumatics.setCompressor(true);
       }
       else  {
