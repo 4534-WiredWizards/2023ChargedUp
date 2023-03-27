@@ -14,28 +14,24 @@ import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Vacuum;
 
-public class AutoTesting extends SequentialCommandGroup {
-  /** Creates a new AutoTesting. */
-  public AutoTesting(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
-    // Use addRequirements() here to declare subsyst  em dependencies.
+public class OnStation extends SequentialCommandGroup {
+  /** Creates a new OnStation. */
+  public OnStation(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
+    // Use addRequirements() here to declare subsystem dependencies.
     addCommands(
-      new FollowTrajectory(drive, AutoTrajectories.toFront, true),
-      new FollowTrajectory(drive, AutoTrajectories.slightBackRight, true),
-      new QuickTurn(drive, Math.PI),
-      new FollowTrajectory(drive, AutoTrajectories.onStation, true)
+ 
+      new FollowTrajectory(drive, AutoTrajectories.onStation, true)   //Moves 90 inches back to charge station
+        // new ParallelCommandGroup(
+      //new AutoArm(arm, 3).withTimeout(2) uncomment
+        //   new FollowTrajectory(drive, AutoTrajectories.slightBack, true)
+        // ),
+      //new FollowTrajectory(drive, AutoTrajectories.onStationFront, true)
+
+       
+       
+
     );
   }
 
+  
 }
-
-//Positive y is left
-//Positive x is forward
-
-//April Tags 2 and 7
-//30 forward 
-//30 backward
-//90 right
-//100 back
-//90 left
-//44 ward
-

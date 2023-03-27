@@ -288,9 +288,10 @@ public class AutoTrajectories {
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-10), Units.inchesToMeters(-2), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(-27), Units.inchesToMeters(-2), new Rotation2d(Math.toRadians(0))),
             config
     );
+
 
     public static Trajectory moveRight =
     TrajectoryGenerator.generateTrajectory(
@@ -372,25 +373,36 @@ public class AutoTrajectories {
             config
     );
 
-    public static Trajectory onStationFront =
+    public static Trajectory onStation =
     TrajectoryGenerator.generateTrajectory(
             new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
             List.of(
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-20), Units.inchesToMeters(-2), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(-87), Units.inchesToMeters(-2), new Rotation2d(Math.toRadians(0))),
             config
     );
 
-    public static Trajectory slightBack =
+    public static Trajectory slightBackLeft = //6 inches away from the charging station was 92 inches to climb. We estimate 145 inches from the grid. :salute:
     TrajectoryGenerator.generateTrajectory(
             new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
             List.of(
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-50), Units.inchesToMeters(1), new Rotation2d(Math.toRadians(1))),
+            new Pose2d(Units.inchesToMeters(-15), Units.inchesToMeters(10), new Rotation2d(Math.toRadians(0))),
             config
     );
+
+    public static Trajectory slightBackRight = //6 inches away from the charging station was 92 inches to climb. We estimate 145 inches from the grid. :salute:
+    TrajectoryGenerator.generateTrajectory(
+            new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+            List.of(
+                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
+            ),
+            new Pose2d(Units.inchesToMeters(-15), Units.inchesToMeters(-10), new Rotation2d(Math.toRadians(0))),
+            config
+    );
+
 
 
     public static Trajectory test1 =

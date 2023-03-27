@@ -29,14 +29,15 @@ public class PlaceAndStation extends SequentialCommandGroup {
       new DoNothing().withTimeout(0.5),
       new SuctionControl(vacuum),
       new DoNothing().withTimeout(0.5),
-      new ExtensionPistonControl(arm),
+      new ExtensionPistonControl(arm),   
+      new FollowTrajectory(drive, AutoTrajectories.back, true),
+      new AutoArm(arm, 3).withTimeout(2),
+      new FollowTrajectory(drive, AutoTrajectories.onStation, true)
+      //new AutoBalance(drive)
+
+        //Moves 50 inches back to charge station
         // new ParallelCommandGroup(
-        //   new AutoArm(arm, 3).withTimeout(3),
-        //   new QuickTurn(drive, Math.PI)
-        // ),
-      new FollowTrajectory(drive, AutoTrajectories.slightBack, true),  //Moves 50 inches back to charge station
-        // new ParallelCommandGroup(
-      new AutoArm(arm, 3).withTimeout(2)
+      //new AutoArm(arm, 3).withTimeout(2) uncomment
         //   new FollowTrajectory(drive, AutoTrajectories.slightBack, true)
         // ),
       //new FollowTrajectory(drive, AutoTrajectories.onStationFront, true)

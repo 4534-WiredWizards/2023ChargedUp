@@ -100,6 +100,10 @@ public class ArmToPosition extends CommandBase {
     //  ramp += increment;
     //}
     
+    // if(m_arm.getGripSolenoid() == true) {
+    //   System.err.println("Canceling PID movment because of grip solenoid");
+    //   m_arm.runArm(0);
+    //   end(true);
     if (m_arm.getArmEncoder() < upperLimit)  {
       m_arm.runArm(-0.1);
     }
@@ -118,6 +122,7 @@ public class ArmToPosition extends CommandBase {
   public void end(boolean interrupted) {
     m_arm.runArm(0);
     System.err.println("Command has ended");
+    
     if(!interrupted && !inAuto) {
       CommandScheduler.getInstance().schedule(new RotateArm(m_arm, true));
     }
@@ -128,6 +133,9 @@ public class ArmToPosition extends CommandBase {
   public boolean isFinished() {
     // if (m_arm.getArmEncoder() > (setpoint-offset) && m_arm.getArmEncoder() < (setpoint+offset)){
     // return true;
+    // }
+    // if(m_arm.getGripSolenoid() == true) {
+    //   return true;
     // }
     if (frc.robot.RobotContainer.m_joystick.getRawAxis(2) > 0.5 || frc.robot.RobotContainer.m_joystick.getRawAxis(3) > 0.5) {
        return true;

@@ -69,8 +69,10 @@ public class RotateArm extends CommandBase {
         m_arm.runArm(-currentSpeed);
         currentSpeed += increment;
       }
-      System.out.println("Running arm");
-      m_arm.runArm(-finalSpeed);
+      System.out.println("Running arm down");
+      if(m_arm.getGripSolenoid() == true){
+        m_arm.runArm(-finalSpeed);
+      }
     }
 
     // if (!isUp && !m_arm.getLowLimit()) {
@@ -82,7 +84,11 @@ public class RotateArm extends CommandBase {
         m_arm.runArm(currentSpeed);
         currentSpeed += increment;
       }
-      m_arm.runArm(finalSpeed);
+      System.out.println("Running arm up");
+      if(m_arm.getGripSolenoid() == true){
+        m_arm.runArm(finalSpeed);
+      } 
+
     }
 
     else {

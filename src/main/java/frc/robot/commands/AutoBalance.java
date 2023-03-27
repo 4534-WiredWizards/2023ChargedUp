@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSubsystem;
 
@@ -12,7 +13,11 @@ public class AutoBalance extends CommandBase {
   DriveSubsystem m_drive;
   private double oldpitch;
   private double currentpitch;
+  private double desiredpitch = 0;
   private double adjust_speed = 0.1;
+  private double maxSpeed = 0.1;
+  private double balanceSpeed;
+  PIDController balancePID;
 
   public AutoBalance(DriveSubsystem drive) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -22,6 +27,8 @@ public class AutoBalance extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    balancePID = new PIDController(0.01, 0, 0);
+    balancePID.setTolerance(1);
     oldpitch = m_drive.getPitch();
   }
 
@@ -30,21 +37,32 @@ public class AutoBalance extends CommandBase {
   public void execute() {
     currentpitch = m_drive.getPitch();
 
-    if (currentpitch > 3) {
-      if (currentpitch < oldpitch) {
-        m_drive.drive(adjust_speed, 0, 0, true);
-      }
-    }
+    //Balance Using PID
+    balanceSpeed = balancePID.calculate(currentpitch, desiredpitch);
 
-    else if (currentpitch < -3) {
-      if (currentpitch > oldpitch) {
-        m_drive.drive(-adjust_speed, 0, 0, true);
-      }
+    if (balanceSpeed > maxSpeed) {
+      m_drive.drive(maxSpeed, 0, 0, true);
     }
-
     else {
-      m_drive.drive(0, 0, 0, true);
+      m_drive.drive(balanceSpeed, 0, 0, true);
     }
+
+    //Balance Not Using PID
+    // if (currentpitch > 3) {
+    //   if (currentpitch < oldpitch) {
+    //     m_drive.drive(adjust_speed, 0, 0, true);
+    //   }
+    // }
+
+    // else if (currentpitch < -3) {
+    //   if (currentpitch > oldpitch) {
+    //     m_drive.drive(-adjust_speed, 0, 0, true);
+    //   }
+    // }
+
+    // else {
+    //   m_drive.drive(0, 0, 0, true);
+    // }
     oldpitch = currentpitch;
   }
 
@@ -58,5 +76,6 @@ public class AutoBalance extends CommandBase {
   @Override
   public boolean isFinished() {
     return false;
+    //return balancePID.atSetpoint();
   }
 }

@@ -108,6 +108,7 @@ public class Robot extends TimedRobot {
         robotContainer.updateShuffleBoard();
         robotContainer.t_arm.showArmEncoder();
         robotContainer.t_vacuum.updateVacuumSensor();
+        robotContainer.t_arm.periodic();
 
 
 

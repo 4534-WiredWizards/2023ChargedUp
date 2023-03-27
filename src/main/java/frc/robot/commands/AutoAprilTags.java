@@ -27,7 +27,7 @@ public class AutoAprilTags extends SequentialCommandGroup {
       ),
       new AutoReleasePiece(vacuum),
       new FollowTrajectory(drive, AutoTrajectories.exitZoneLeft, true),
-      new FollowTrajectory(drive, AutoTrajectories.onStationFront, true)
+      new FollowTrajectory(drive, AutoTrajectories.onStation, true)
   );
   }
 

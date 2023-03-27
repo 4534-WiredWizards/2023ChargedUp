@@ -34,9 +34,10 @@ public class PlaceAndBackLeft extends SequentialCommandGroup {
         new SuctionControl(vacuum),
         new DoNothing().withTimeout(0.5),
         new ExtensionPistonControl(arm),
-        //new FollowTrajectory(drive, AutoTrajectories.back, true),
+        // new FollowTrajectory(drive, AutoTrajectories.slightBackLeft, true),
+        // new ArmToPosition(arm, 3, true).withTimeout(2),
         new FollowTrajectory(drive, AutoTrajectories.exitZoneLeft, true),
-        new ArmToPosition(arm, 3, true).withTimeout(3)
+        new ArmToPosition(arm, 3, true).withTimeout(2)
         
        
        
