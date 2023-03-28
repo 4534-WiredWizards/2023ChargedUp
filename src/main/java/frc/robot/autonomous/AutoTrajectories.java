@@ -337,7 +337,7 @@ public class AutoTrajectories {
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-210), Units.inchesToMeters(10), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(-180), Units.inchesToMeters(10), new Rotation2d(Math.toRadians(0))),
             config
     );
 
@@ -352,7 +352,7 @@ public class AutoTrajectories {
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-210), Units.inchesToMeters(-10), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(-180), Units.inchesToMeters(-10), new Rotation2d(Math.toRadians(0))),
             config
     );
 

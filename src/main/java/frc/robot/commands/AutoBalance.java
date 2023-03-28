@@ -36,6 +36,7 @@ public class AutoBalance extends CommandBase {
   @Override
   public void execute() {
     currentpitch = m_drive.getPitch();
+    
 
     //Balance Using PID
     balanceSpeed = balancePID.calculate(currentpitch, desiredpitch);
