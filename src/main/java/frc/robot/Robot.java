@@ -127,7 +127,7 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
         System.out.print("In auto init");
         autonomousCommand = robotContainer.getAutonomousCommand(); //robotContainer.getTrajectories();   //autoChooser.getSelected();
-
+        System.out.print("Got auto command");
         if (autonomousCommand != null) autonomousCommand.schedule();
 
 

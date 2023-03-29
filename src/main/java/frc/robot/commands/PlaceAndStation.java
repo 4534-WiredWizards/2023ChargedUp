@@ -20,20 +20,37 @@ public class PlaceAndStation extends SequentialCommandGroup {
     // Use addRequirements() here to declare subsystem dependencies.
     addCommands(
       new SuctionControl(vacuum),
-      new DoNothing().withTimeout(1),
+      new DoNothing().withTimeout(.4),
       new GripPistonControl(arm),
-      new DoNothing().withTimeout(0.5),
+      new DoNothing().withTimeout(0.3),
       new ArmToPosition(arm, 5, true).withTimeout(3),
       new FollowTrajectory(drive, AutoTrajectories.toFront, true),
       new ExtensionPistonControl(arm),
-      new DoNothing().withTimeout(0.5),
+      new DoNothing().withTimeout(0.2),
       new SuctionControl(vacuum),
-      new DoNothing().withTimeout(0.5),
-      new ExtensionPistonControl(arm),   
-      new FollowTrajectory(drive, AutoTrajectories.back, true),
-      new AutoArm(arm, 3).withTimeout(2),
-      new FollowTrajectory(drive, AutoTrajectories.onStation, true)
-      //new AutoBalance(drive)
+      new DoNothing().withTimeout(1),
+      new ParallelCommandGroup(
+        new ExtensionPistonControl(arm), 
+        new FollowTrajectory(drive, AutoTrajectories.onStation, true)
+      ),
+      // new FollowTrajectory(drive, AutoTrajectories.back, true),
+      // new AutoArm(arm, 3).withTimeout(2),
+      new ParallelCommandGroup(
+        new AutoBalance(drive),
+        new AutoArm(arm, 3).withTimeout(1)
+      ),
+      new DoNothing().withTimeout(.7),
+      new AutoBalance(drive),
+      new DoNothing().withTimeout(.7),
+      new AutoBalance(drive),
+      new DoNothing().withTimeout(.7),
+      new AutoBalance(drive),
+      new DoNothing().withTimeout(.7),
+      new AutoBalance(drive),
+      new DoNothing().withTimeout(1),
+      new AutoBalance(drive),
+      new DoNothing().withTimeout(1),
+      new AutoBalance(drive)
 
         //Moves 50 inches back to charge station
         // new ParallelCommandGroup(

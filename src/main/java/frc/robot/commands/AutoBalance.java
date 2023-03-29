@@ -15,7 +15,7 @@ public class AutoBalance extends CommandBase {
   private double currentpitch;
   private double desiredpitch = 0;
   private double adjust_speed = 0.1;
-  private double maxSpeed = 0.1;
+  private double maxSpeed = 0.4;
   private double balanceSpeed;
   PIDController balancePID;
 
@@ -27,7 +27,7 @@ public class AutoBalance extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    balancePID = new PIDController(0.01, 0, 0);
+    balancePID = new PIDController(0.01, 0, 0.002);
     balancePID.setTolerance(1);
     oldpitch = m_drive.getPitch();
   }
@@ -39,13 +39,13 @@ public class AutoBalance extends CommandBase {
     
 
     //Balance Using PID
-    balanceSpeed = balancePID.calculate(currentpitch, desiredpitch);
+    balanceSpeed = 3*balancePID.calculate(currentpitch, desiredpitch);
 
     if (balanceSpeed > maxSpeed) {
-      m_drive.drive(maxSpeed, 0, 0, true);
+      m_drive.drive(-maxSpeed, 0, 0, true);
     }
     else {
-      m_drive.drive(balanceSpeed, 0, 0, true);
+      m_drive.drive(-balanceSpeed, 0, 0, true);
     }
 
     //Balance Not Using PID
@@ -75,8 +75,9 @@ public class AutoBalance extends CommandBase {
 
   // Returns true when the command should end.
   @Override
-  public boolean isFinished() {
-    return false;
-    //return balancePID.atSetpoint();
+  public boolean isFinished() 
+  {
+    //return false;
+    return balancePID.atSetpoint();
   }
 }

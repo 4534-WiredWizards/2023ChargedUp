@@ -344,6 +344,7 @@ public class DriveSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Back Left Angle: ", rearLeft.getCanCoderRawAngle());
     SmartDashboard.putNumber("Back Right Angle: ", rearRight.getCanCoderRawAngle());
     SmartDashboard.putNumber("Gyro Angle", -ahrs.getAngle());
+    SmartDashboard.putNumber("Gyro Pitch", -ahrs.getPitch());
 
     SmartDashboard.putNumber("Front Left Adjusted Angle: ", frontLeft.getCanCoderAngle().getDegrees());
     SmartDashboard.putNumber("Front Right Adjusted Angle: ", frontRight.getCanCoderAngle().getDegrees());

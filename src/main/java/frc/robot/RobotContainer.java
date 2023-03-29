@@ -57,6 +57,7 @@ import frc.robot.commands.ZeroArm;
 import frc.robot.commands.resetGyro;
 import frc.robot.commands.AprilTagDrive;
 import frc.robot.commands.ArmToPosition;
+import frc.robot.commands.AutoBalance;
 import frc.robot.commands.AutoTesting;
 import frc.robot.commands.PlaceAndBackLeft;
 import frc.robot.commands.PlaceAndBackRight;
@@ -173,7 +174,7 @@ public class RobotContainer {
         //new JoystickButton(m_joystick, InputDevices.btn_a).whileTrue(new ControlShooterMotor(t_destimator));
 
         new JoystickButton(m_fancyJoystick, fancyJoystick.l1).onTrue(new resetGyro(drive));
-        //new JoystickButton(m_fancyJoystick, fancyJoystick.circle).onTrue(new QuickTurn(drive, 1));
+        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).onTrue(new AutoBalance(drive));
 
         //Suctions
         //new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SecondSuction(t_vacuum));
@@ -219,7 +220,7 @@ public class RobotContainer {
 
         SmartDashboard.putNumber("Initialized", 1);
         drive.resetPose(new Pose2d(0, 0, new Rotation2d(0)));
-        return new PlaceAndBackRight(drive, t_arm, t_vacuum);
+        return new PlaceAndStation(drive, t_arm, t_vacuum);
         //return new AutoTesting(drive, t_arm, t_vacuum);
         //return new OnStation(drive, t_arm, t_vacuum);
         // return new CharacterizeDrive(drive);
