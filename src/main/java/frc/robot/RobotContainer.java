@@ -174,7 +174,7 @@ public class RobotContainer {
         //new JoystickButton(m_joystick, InputDevices.btn_a).whileTrue(new ControlShooterMotor(t_destimator));
 
         new JoystickButton(m_fancyJoystick, fancyJoystick.l1).onTrue(new resetGyro(drive));
-        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).onTrue(new AutoBalance(drive));
+        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).whileTrue(new AutoBalance(drive));
 
         //Suctions
         //new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SecondSuction(t_vacuum));

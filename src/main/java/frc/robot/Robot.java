@@ -85,6 +85,7 @@ public class Robot extends TimedRobot {
         SmartDashboard.putData("Auto Routines", autoChooser);
         robotContainer.getTrajectories();
 
+        autonomousCommand = robotContainer.getAutonomousCommand();
     }  
 
     @Override
@@ -125,11 +126,13 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        System.out.print("In auto init");
-        autonomousCommand = robotContainer.getAutonomousCommand(); //robotContainer.getTrajectories();   //autoChooser.getSelected();
+        //System.out.print("In auto init");
+        // autonomousCommand = robotContainer.getAutonomousCommand(); //robotContainer.getTrajectories();   //autoChooser.getSelected();
         System.out.print("Got auto command");
-        if (autonomousCommand != null) autonomousCommand.schedule();
-
+        if (autonomousCommand != null) {
+            //drive.resetPose(new Pose2d(0, 0, new Rotation2d(0)));
+            autonomousCommand.schedule();
+        }
 
     }
 

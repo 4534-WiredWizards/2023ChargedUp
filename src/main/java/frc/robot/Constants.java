@@ -42,7 +42,7 @@ public class Constants {
         public static final double frontRightAngleOffset = Units.degreesToRadians(128.5);  //90 
 
         public static final double rearLeftAngleOffset = Units.degreesToRadians(265.6);  //84.6 //263.5 //EFFECTS Front Right
-        public static final double rearRightAngleOffset = Units.degreesToRadians(241.2); //61.6 //240.7
+        public static final double rearRightAngleOffset = Units.degreesToRadians(16.61); //61.6 //240.7
     
         //public static final int feederWheelMotorId = 35;
         // public static final int rightFlywheelMotorId = 25;
