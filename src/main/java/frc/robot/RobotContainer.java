@@ -36,6 +36,7 @@ import frc.robot.subsystems.Vacuum;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.PressureSensor;
 import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.AutoChooser;
 import frc.robot.subsystems.DistanceEstimator;
 import frc.robot.subsystems.Limelight;
 //import frc.robot.subsystems.NewIntake;
@@ -99,6 +100,7 @@ public class RobotContainer {
     public Arm t_arm = new Arm();
     public LedLights l_ledLights = new LedLights();
     public PressureSensor t_psensor = new PressureSensor();
+    public AutoChooser t_autoChooser = new AutoChooser(drive, t_arm, t_vacuum);
     //public NewIntake t_newintake = new NewIntake();
 
     
@@ -117,6 +119,8 @@ public class RobotContainer {
                 true
             )
         );
+
+        
 
         /*
         shooter.setDefaultCommand(
@@ -174,7 +178,7 @@ public class RobotContainer {
         //new JoystickButton(m_joystick, InputDevices.btn_a).whileTrue(new ControlShooterMotor(t_destimator));
 
         new JoystickButton(m_fancyJoystick, fancyJoystick.l1).onTrue(new resetGyro(drive));
-        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).whileTrue(new AutoBalance(drive));
+        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).onTrue(new AutoBalance(drive));
 
         //Suctions
         //new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SecondSuction(t_vacuum));
@@ -220,13 +224,12 @@ public class RobotContainer {
 
         SmartDashboard.putNumber("Initialized", 1);
         drive.resetPose(new Pose2d(0, 0, new Rotation2d(0)));
+        //return t_autoChooser.getAuto();
         return new PlaceAndStation(drive, t_arm, t_vacuum);
         //return new AutoTesting(drive, t_arm, t_vacuum);
         //return new OnStation(drive, t_arm, t_vacuum);
         // return new CharacterizeDrive(drive);
-        //return new LeftDriveBack(drive, t_shooter, t_intake, t_feeder, t_limelight); 
-        //return new OneShotAuto(drive, t_shooter, t_intake, t_feeder, t_limelight); 
-        //return new DriveBack(drive, t_shooter, t_limelight, t_feeder);
+  
     }
 
     public Command getTrajectories() {

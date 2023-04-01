@@ -20,12 +20,24 @@ public class OnStation extends SequentialCommandGroup {
     // Use addRequirements() here to declare subsystem dependencies.
     addCommands(
  
-      new FollowTrajectory(drive, AutoTrajectories.onStation, true)   //Moves 90 inches back to charge station
+      new FollowTrajectory(drive, AutoTrajectories.onStation, true),   //Moves 90 inches back to charge station
         // new ParallelCommandGroup(
       //new AutoArm(arm, 3).withTimeout(2) uncomment
         //   new FollowTrajectory(drive, AutoTrajectories.slightBack, true)
         // ),
       //new FollowTrajectory(drive, AutoTrajectories.onStationFront, true)
+      new DoNothing().withTimeout(.7),
+      new AutoBalance(drive),
+      new DoNothing().withTimeout(.7),
+      new AutoBalance(drive),
+      new DoNothing().withTimeout(.7),
+      new AutoBalance(drive),
+      new DoNothing().withTimeout(.7),
+      new AutoBalance(drive),
+      new DoNothing().withTimeout(1),
+      new AutoBalance(drive),
+      new DoNothing().withTimeout(1),
+      new AutoBalance(drive)
 
        
        

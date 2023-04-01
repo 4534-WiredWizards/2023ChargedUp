@@ -39,7 +39,7 @@ public class AutoBalance extends CommandBase {
     
 
     //Balance Using PID
-    balanceSpeed = 3*balancePID.calculate(currentpitch, desiredpitch);
+    balanceSpeed = 2*balancePID.calculate(currentpitch, desiredpitch);
 
     if (balanceSpeed > maxSpeed) {
       m_drive.drive(-maxSpeed, 0, 0, true);
