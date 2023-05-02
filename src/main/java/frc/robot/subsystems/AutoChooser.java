@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.commands.ArmDownLeftBack;
+import frc.robot.commands.ArmDownRightBack;
 import frc.robot.commands.OnStation;
 import frc.robot.commands.PlaceAndBackLeft;
 import frc.robot.commands.PlaceAndBackRight;
@@ -17,12 +19,14 @@ public class AutoChooser extends SubsystemBase {
   /** Creates a new AutoChooser. */
 
   public enum AutoMode {
-    PlaceAndStation, 
+    PlaceAndStation,
     PlaceAndBackLeft,
     PlaceAndBackRight,
-    OnStation
+    OnStation,
+    ArmDownLeftBack,
+    ArmDownRightBack
   }
-  
+
   private SendableChooser<AutoMode> autoChooser;
   private Command autoRoutine;
   private DriveSubsystem m_drive;
@@ -38,6 +42,9 @@ public class AutoChooser extends SubsystemBase {
     autoChooser.addOption("Place and Back Left", AutoMode.PlaceAndBackLeft);
     autoChooser.addOption("Place and Back Right", AutoMode.PlaceAndBackRight);
     autoChooser.addOption("On Station", AutoMode.OnStation);
+    autoChooser.addOption("Arm Down Left Back", AutoMode.ArmDownLeftBack);
+    autoChooser.addOption("Arm Down Right Back", AutoMode.ArmDownRightBack);
+
     SmartDashboard.putData("Auto Chooser", autoChooser);
   }
 
@@ -46,9 +53,9 @@ public class AutoChooser extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public Command getAuto(){
+  public Command getAuto() {
 
-    AutoMode selectedAutoMode = (AutoMode)(autoChooser.getSelected());
+    AutoMode selectedAutoMode = (AutoMode) (autoChooser.getSelected());
     System.out.println("Running getAuto");
     switch (selectedAutoMode) {
       default:
@@ -61,7 +68,7 @@ public class AutoChooser extends SubsystemBase {
         autoRoutine = new PlaceAndBackLeft(m_drive, m_arm, m_vacuum);
         System.out.println("Place And Left Auto");
         break;
-      
+
       case PlaceAndBackRight:
         autoRoutine = new PlaceAndBackRight(m_drive, m_arm, m_vacuum);
         System.out.println("Place And Right Auto");
@@ -70,6 +77,14 @@ public class AutoChooser extends SubsystemBase {
       case OnStation:
         autoRoutine = new OnStation(m_drive, m_arm, m_vacuum);
         System.out.println("On Station Auto");
+        break;
+
+      case ArmDownLeftBack:
+        autoRoutine = new ArmDownLeftBack(m_drive, m_arm, m_vacuum);
+        break;
+
+      case ArmDownRightBack:
+        autoRoutine = new ArmDownRightBack(m_drive, m_arm, m_vacuum);
         break;
 
     }

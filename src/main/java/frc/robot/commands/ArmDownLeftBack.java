@@ -13,9 +13,9 @@ import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Vacuum;
 
-public class PlaceAndBackLeft extends SequentialCommandGroup {
+public class ArmDownLeftBack extends SequentialCommandGroup {
   /** Creates a new AutoTesting. */
-  public PlaceAndBackLeft(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
+  public ArmDownLeftBack(DriveSubsystem drive, Arm arm, Vacuum vacuum) {
     // Use addRequirements() here to declare subsystem dependencies.
     addCommands(
         //new SetTongue(arm, true),
@@ -34,11 +34,12 @@ public class PlaceAndBackLeft extends SequentialCommandGroup {
         new SuctionControl(vacuum),
         new DoNothing().withTimeout(0.5),
         new ExtensionPistonControl(arm),
-        //new FollowTrajectory(drive, AutoTrajectories.back, true),
-        //new ArmToPosition(arm, 3, true).withTimeout(2)
+        new FollowTrajectory(drive, AutoTrajectories.back, true),
+        new ArmToPosition(arm, 3, true).withTimeout(2),
+        new FollowTrajectory(drive, AutoTrajectories.exitZoneLessLeft, true)
         // new FollowTrajectory(drive, AutoTrajectories.slightBackLeft, true),
         // new ArmToPosition(arm, 3, true).withTimeout(2),
-        new FollowTrajectory(drive, AutoTrajectories.exitZoneLeft, true)
+        //new FollowTrajectory(drive, AutoTrajectories.exitZoneLeft, true)
         
         //new ArmToPosition(arm, 3, true).withTimeout(2)
         

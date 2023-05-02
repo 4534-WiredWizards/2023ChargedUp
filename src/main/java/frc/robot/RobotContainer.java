@@ -178,7 +178,7 @@ public class RobotContainer {
         //new JoystickButton(m_joystick, InputDevices.btn_a).whileTrue(new ControlShooterMotor(t_destimator));
 
         new JoystickButton(m_fancyJoystick, fancyJoystick.l1).onTrue(new resetGyro(drive));
-        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).onTrue(new AutoBalance(drive));
+        new JoystickButton(m_fancyJoystick, fancyJoystick.circle).whileTrue(new AutoBalance(drive));
 
         //Suctions
         //new JoystickButton(m_joystick, InputDevices.btn_b).onTrue(new SecondSuction(t_vacuum));
@@ -224,8 +224,8 @@ public class RobotContainer {
 
         SmartDashboard.putNumber("Initialized", 1);
         drive.resetPose(new Pose2d(0, 0, new Rotation2d(0)));
-        //return t_autoChooser.getAuto();
-        return new PlaceAndStation(drive, t_arm, t_vacuum);
+        return t_autoChooser.getAuto();
+        //return new PlaceAndBackLeft(drive, t_arm, t_vacuum);
         //return new AutoTesting(drive, t_arm, t_vacuum);
         //return new OnStation(drive, t_arm, t_vacuum);
         // return new CharacterizeDrive(drive);

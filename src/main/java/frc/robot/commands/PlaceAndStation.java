@@ -36,8 +36,9 @@ public class PlaceAndStation extends SequentialCommandGroup {
       // new FollowTrajectory(drive, AutoTrajectories.back, true),
       // new AutoArm(arm, 3).withTimeout(2),
       new ParallelCommandGroup(
+
         new AutoBalance(drive),
-        new AutoArm(arm, 3).withTimeout(1)
+        new ArmToPosition(arm, 3).withTimeout(2)
       ),
       new DoNothing().withTimeout(.7),
       new AutoBalance(drive),

@@ -35,11 +35,12 @@ public class AutoBalance extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    System.out.println("Running auto balance");
     currentpitch = m_drive.getPitch();
     
 
     //Balance Using PID
-    balanceSpeed = 2*balancePID.calculate(currentpitch, desiredpitch);
+    balanceSpeed = 3*balancePID.calculate(currentpitch, desiredpitch);
 
     if (balanceSpeed > maxSpeed) {
       m_drive.drive(-maxSpeed, 0, 0, true);

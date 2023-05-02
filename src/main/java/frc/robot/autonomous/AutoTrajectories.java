@@ -273,7 +273,7 @@ public class AutoTrajectories {
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(27), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(30), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
             config
     );
 
@@ -288,7 +288,7 @@ public class AutoTrajectories {
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-27), Units.inchesToMeters(-2), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(-20), Units.inchesToMeters(-2), new Rotation2d(Math.toRadians(0))),
             config
     );
 
@@ -337,7 +337,7 @@ public class AutoTrajectories {
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-180), Units.inchesToMeters(10), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(-180), Units.inchesToMeters(16), new Rotation2d(Math.toRadians(5))),
             config
     );
 
@@ -352,7 +352,37 @@ public class AutoTrajectories {
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-180), Units.inchesToMeters(-10), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(-180), Units.inchesToMeters(-16), new Rotation2d(Math.toRadians(5))),
+            config
+    );
+
+    public static Trajectory exitZoneLessLeft =
+    TrajectoryGenerator.generateTrajectory(
+            new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+            List.of(
+                //new Translation2d(Units.inchesToMeters(60), new Rotation2d(0)),
+                //new Translation2d(Units.inchesToMeters(10), new Rotation2d(-90)),
+                //new Translation2d(Units.inchesToMeters(10), new Rotation2d(0))
+                //new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(60))
+                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
+                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
+            ),
+            new Pose2d(Units.inchesToMeters(-160), Units.inchesToMeters(16), new Rotation2d(Math.toRadians(0))),
+            config
+    );
+
+    public static Trajectory exitZoneLessRight =
+    TrajectoryGenerator.generateTrajectory(
+            new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+            List.of(
+                //new Translation2d(Units.inchesToMeters(60), new Rotation2d(0)),
+                //new Translation2d(Units.inchesToMeters(10), new Rotation2d(-90)),
+                //new Translation2d(Units.inchesToMeters(10), new Rotation2d(0))
+                //new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(60))
+                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(60)),
+                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
+            ),
+            new Pose2d(Units.inchesToMeters(-160), Units.inchesToMeters(-16), new Rotation2d(Math.toRadians(0))),
             config
     );
 
@@ -379,7 +409,7 @@ public class AutoTrajectories {
             List.of(
                 //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
             ),
-            new Pose2d(Units.inchesToMeters(-80), Units.inchesToMeters(-2), new Rotation2d(Math.toRadians(0))),
+            new Pose2d(Units.inchesToMeters(-100), Units.inchesToMeters(-2), new Rotation2d(Math.toRadians(0))),
             config
     );
 
@@ -470,19 +500,19 @@ public class AutoTrajectories {
             config
     );
 
-    public static Trajectory part1 =
-    TrajectoryGenerator.generateTrajectory(
-            new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
-            List.of(
-                new Translation2d(Units.inchesToMeters(15), Units.inchesToMeters(0)),
-                new Translation2d(Units.inchesToMeters(-15), Units.inchesToMeters(0)),
-                new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(60))
-                //new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(10))
-                //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
-            ),
-            new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(60), new Rotation2d(Math.toRadians(0))),
-            config
-    );
+    // public static Trajectory part1 =
+    // TrajectoryGenerator.generateTrajectory(
+    //         new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Math.toRadians(0))),
+    //         List.of(
+    //             new Translation2d(Units.inchesToMeters(15), Units.inchesToMeters(0)),
+    //             new Translation2d(Units.inchesToMeters(-15), Units.inchesToMeters(0)),
+    //             new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(60))
+    //             //new Translation2d(Units.inchesToMeters(0), Units.inchesToMeters(10))
+    //             //new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(0)),
+    //         ),
+    //         new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(60), new Rotation2d(Math.toRadians(0))),
+    //         config
+    // );
 
 
    
