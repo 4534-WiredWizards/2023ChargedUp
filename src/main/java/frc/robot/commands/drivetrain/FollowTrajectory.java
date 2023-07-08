@@ -38,7 +38,7 @@ public class FollowTrajectory extends SwerveControllerCommand {
 
     //uses motion profiling versus standard PID for smoother heading tracking and to limit rotational speed
     private static final ProfiledPIDController rotationController =
-        new ProfiledPIDController(0.5, 0.1, 0,
+        new ProfiledPIDController(0.05, 0.05, .4,
              new TrapezoidProfile.Constraints(AutoConstants.maxVelMetersPerSec,
                  AutoConstants.maxAccelMetersPerSecondSq
             )
@@ -76,6 +76,8 @@ public class FollowTrajectory extends SwerveControllerCommand {
 
         // set the rotation controller to wrap around from -PI to PI
         rotationController.enableContinuousInput(-Math.PI, Math.PI);
+
+        SmartDashboard.putBoolean("atGoal",rotationController.atGoal());
 
         this.trajectory = trajectory;
  

@@ -9,6 +9,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.I2C;
@@ -84,7 +85,7 @@ public class DriveSubsystem extends SubsystemBase {
     private double commandedForward = 0;
     private double commandedStrafe = 0;
     private double commandedRotation = 0;
-
+    private final ADXRS450_Gyro spi_gyro = new ADXRS450_Gyro();
     private boolean isCommandedFieldRelative = true;
 
     //private final PigeonIMU imu = new PigeonIMU(CANDevices.imuId);
@@ -278,7 +279,10 @@ public class DriveSubsystem extends SubsystemBase {
         
         double[] ypr = new double[3];
         ypr[0] = 0-ahrs.getAngle();
-        return Rotation2d.fromDegrees(ypr[0]);
+        SmartDashboard.putNumber("ypr(angle)", ypr[0]);
+        SmartDashboard.putNumber("new gyro angle", -spi_gyro.getAngle());
+        
+        return Rotation2d.fromDegrees(-spi_gyro.getAngle());
 
         //Jason Test Code
         // double[] rotation_2 = new double[3];
@@ -335,6 +339,8 @@ public class DriveSubsystem extends SubsystemBase {
     public void resetImu() {
 
         ahrs.zeroYaw();
+        spi_gyro.reset();
+        
     }
 
     public void updateSmartDashboard(){
