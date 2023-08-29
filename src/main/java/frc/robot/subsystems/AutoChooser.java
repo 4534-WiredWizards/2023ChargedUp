@@ -38,12 +38,12 @@ public class AutoChooser extends SubsystemBase {
     m_arm = arm;
     m_vacuum = vacuum;
     autoChooser = new SendableChooser<AutoMode>();
-    autoChooser.setDefaultOption("Place and Station", AutoMode.PlaceAndStation);
+    // autoChooser.setDefaultOption("Place and Station", AutoMode.PlaceAndStation);
     autoChooser.addOption("Place and Back Left", AutoMode.PlaceAndBackLeft);
     autoChooser.addOption("Place and Back Right", AutoMode.PlaceAndBackRight);
-    autoChooser.addOption("On Station", AutoMode.OnStation);
-    autoChooser.addOption("Arm Down Left Back", AutoMode.ArmDownLeftBack);
-    autoChooser.addOption("Arm Down Right Back", AutoMode.ArmDownRightBack);
+    // autoChooser.addOption("On Station", AutoMode.OnStation);
+    // autoChooser.addOption("Arm Down Left Back", AutoMode.ArmDownLeftBack);
+    // autoChooser.addOption("Arm Down Right Back", AutoMode.ArmDownRightBack);
 
     SmartDashboard.putData("Auto Chooser", autoChooser);
   }
