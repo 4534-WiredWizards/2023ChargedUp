@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.platform.can.AutocacheState;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -14,6 +16,7 @@ import frc.robot.commands.OnStation;
 import frc.robot.commands.PlaceAndBackLeft;
 import frc.robot.commands.PlaceAndBackRight;
 import frc.robot.commands.PlaceAndStation;
+import frc.robot.commands.DoNothingAuto;;
 
 public class AutoChooser extends SubsystemBase {
   /** Creates a new AutoChooser. */
@@ -24,7 +27,8 @@ public class AutoChooser extends SubsystemBase {
     PlaceAndBackRight,
     OnStation,
     ArmDownLeftBack,
-    ArmDownRightBack
+    ArmDownRightBack,
+    DoNothingAuto
   }
 
   private SendableChooser<AutoMode> autoChooser;
@@ -41,6 +45,7 @@ public class AutoChooser extends SubsystemBase {
     // autoChooser.setDefaultOption("Place and Station", AutoMode.PlaceAndStation);
     autoChooser.addOption("Place and Back Left", AutoMode.PlaceAndBackLeft);
     autoChooser.addOption("Place and Back Right", AutoMode.PlaceAndBackRight);
+    autoChooser.addOption("DoNothingAuto", AutoMode.DoNothingAuto);
     // autoChooser.addOption("On Station", AutoMode.OnStation);
     // autoChooser.addOption("Arm Down Left Back", AutoMode.ArmDownLeftBack);
     // autoChooser.addOption("Arm Down Right Back", AutoMode.ArmDownRightBack);
@@ -87,7 +92,14 @@ public class AutoChooser extends SubsystemBase {
         autoRoutine = new ArmDownRightBack(m_drive, m_arm, m_vacuum);
         break;
 
+      case DoNothingAuto:
+        autoRoutine = new DoNothingAuto(m_drive);
+        break;
+
     }
     return autoRoutine;
   }
 }
+
+
+
